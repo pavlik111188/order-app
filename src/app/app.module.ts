@@ -4,17 +4,19 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
+import {AppRoutingModule} from "./app-routing.module";
+import {CoreModule} from "./core/core.module";
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    AppRoutingModule,
+    CoreModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
