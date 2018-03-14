@@ -1,18 +1,23 @@
 <header>
-  <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" [containerInside]="true">
+  <mdb-navbar SideClass="navbar navbar-dark mdb-color darken-4 fixed-top navbar-expand-lg scrolling-navbar" [containerInside]="true">
     <logo>
-      <a class="logo navbar-brand" routerLink="/" style="cursor: pointer"><strong>Navbar</strong></a>
+      <a class="navbar-brand" routerLink="/" style="cursor: pointer">
+        <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" height="30" alt="">
+      </a>
     </logo>
     <links>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active waves-light" mdbRippleRadius>
-          <a class="nav-link" routerLink="/" style="cursor: pointer">Home <span class="sr-only">(current)</span></a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item waves-light" mdbRippleRadius>
+          <a class="nav-link">TABLE RESERVATIONS</a>
         </li>
         <li class="nav-item waves-light" mdbRippleRadius>
-          <a class="nav-link">Link</a>
+          <a class="nav-link">PRICING</a>
         </li>
         <li class="nav-item waves-light" mdbRippleRadius>
-          <a class="nav-link">Profile</a>
+          <a class="nav-link">LOG IN</a>
+        </li>
+        <li class="nav-item waves-light" mdbRippleRadius>
+          <a class="nav-link">GET ACCESS NOW</a>
         </li>
       </ul>
     </links>
