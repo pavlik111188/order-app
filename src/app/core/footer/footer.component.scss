@@ -1,0 +1,65 @@
+.btn-floating {
+  position: relative;
+  z-index: 1;
+  vertical-align: middle;
+  display: inline-block;
+  overflow: hidden;
+  width: 47px;
+  height: 47px;
+  padding: 0;
+  border-radius: 50%;
+  margin: 10px;
+  background-color: #a6c;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: .3s;
+  transition: .3s;
+
+  &:hover, &:focus, &:active {
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+  }
+
+  &.btn-small {
+    width: 36.15385px;
+    height: 36.15385px;
+
+    &.btn-fb {
+      background-color: #3b5998!important;
+      color: #fff!important;
+    }
+
+    &.btn-tw {
+      background-color: #55acee!important;
+      color: #fff!important;
+    }
+
+    &.btn-gplus {
+      background-color: #dd4b39!important;
+      color: #fff!important;
+    }
+
+    &.btn-li {
+      background-color: #0082ca!important;
+      color: #fff!important;
+    }
+
+    &.btn-pin {
+      background-color: #c61118!important;
+      color: #fff!important;
+    }
+
+    &.btn-ins {
+      background-color: #2e5e86!important;
+      color: #fff!important;
+    }
+
+    i {
+      display: inline-block;
+      width: inherit;
+      color: #fff;
+      font-size: .96154rem;
+      line-height: 36.15385px;
+      text-align: center;
+    }
+  }
+}

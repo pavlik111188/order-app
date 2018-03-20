@@ -9,7 +9,7 @@
           <a class="nav-link" routerLink="/" style="cursor: pointer">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item waves-light" mdbRippleRadius>
-          <a class="nav-link" (click)="staticModal.show()">Log In</a>
+          <a class="nav-link">Link</a>
         </li>
         <li class="nav-item waves-light" mdbRippleRadius>
           <a class="nav-link">Profile</a>
@@ -33,20 +33,3 @@
   <!-- /.Main -->
 </header>
 <!--Main Navigation-->
-
-<div class="modal fade" mdbModal #staticModal="mdb-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title pull-left">Static modal</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>This is static modal.</p>
-        <p>Click <b>×</b> to close modal.</p>
-      </div>
-    </div>
-  </div>
-</div>
