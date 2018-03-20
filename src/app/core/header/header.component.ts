@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ModalDirective } from '../../typescripts/free';
+import { ModalDirective } from '../../mdb';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +8,7 @@ import { ModalDirective } from '../../typescripts/free';
 })
 export class HeaderComponent implements OnInit {
 
-  @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
+  @ViewChild('autoShownModal') public autoShownModal: ModalDirective;
   public isModalShown: boolean = true;
 
   public showModal():void {
