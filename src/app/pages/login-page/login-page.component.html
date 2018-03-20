@@ -1,0 +1,116 @@
+<div class="row mt-5 pt-5">
+  <div class="col align-self-start"></div>
+  <div class="col align-self-center">
+    <div class="card" style="width: 24rem">
+
+      <div class="card-body mx-4">
+
+        <!--Header-->
+        <div class="text-center">
+          <h3 class="dark-grey-text mb-5">
+            <strong id="page_title">LABELS.LOGIN</strong>
+          </h3>
+        </div>
+
+        <!--Body-->
+        <form (ngSubmit)="loginWithCredentials()">
+          <div class="md-form">
+            <i class="fa fa-envelope prefix"></i>
+            <input mdbActive type="email" class="form-control" id="input_email">
+            <label for="email">INPUTS.USER_EMAIL</label>
+            <div class="invalid-feedback">
+              TEXTS.PROVIDE_VALID_EMAIL
+            </div>
+          </div>
+
+          <div class="md-form pb-3">
+            <i class="fa fa-lock prefix"></i>
+            <input mdbActive type="password" class="form-control" id="input_password">
+            <label for="password">INPUTS.USER_PASSWORD</label>
+            <div class="invalid-feedback">
+              TEXTS.PROVIDE_VALID_PASSWORD
+            </div>
+            <p class="font-small blue-text d-flex justify-content-end" (click)="resetPasswordModal.show()" id="open_reset_modal">
+              <a class="blue-text ml-1">LABELS.FORGOT_PASSWORD</a>
+            </p>
+            <p1 class="text-danger">FIREBASE_ERRORS</p1>
+          </div>
+
+          <div class="text-center mb-3">
+            <button type="submit" class="btn pink btn-lg btn-block" id="button_login">BUTTONS.LOGIN</button>
+          </div>
+        </form>
+
+        <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">LABELS.SIGN_IN_WITH</p>
+
+        <div class="row my-3 d-flex justify-content-center">
+          <!--Facebook-->
+          <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a waves-effect waves-light" (click)="loginWithFacebook()"
+            id="button_login_with_facebook">
+            <i class="fa fa-facebook pink-text text-center"></i>
+          </button>
+          <!--Twitter-->
+          <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a waves-effect waves-light" (click)="loginWithTwitter()"
+            id="button_login_with_twitter">
+            <i class="fa fa-twitter pink-text"></i>
+          </button>
+          <!--Google +-->
+          <button type="button" class="btn btn-white btn-rounded z-depth-1a waves-effect waves-light" (click)="loginWithGoogle()" id="button_login_with_google">
+            <i class="fa fa-google-plus pink-text"></i>
+          </button>
+        </div>
+
+
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer mx-5 pt-3 mb-1">
+        <p class="font-small grey-text d-flex justify-content-end">LABELS.NO_MEMBER
+          <a routerLink="/signup" class="blue-text ml-1" id="a_signup">LABELS.SIGN_UP</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+  <div class="col align-self-end"></div>
+</div>
+
+
+
+<!--Modal: Contact form-->
+<div mdbModal #resetPasswordModal="mdb-modal" class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header indigo darken-3 white-text">
+        <h4 class="title">LABELS.RESET_PASSWORD</h4>
+        <button type="button" id="btn_close_modal" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close"
+          (click)="resetPasswordModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form (ngSubmit)="resetPassword()">
+        <div class="modal-body">
+          <p>TEXTS.PASSWORT_RESET_MODAL</p>
+          <div class="md-form">
+            <input mdbActive type="email" id="input_modal_email" class="form-control">
+            <label for="form1">INPUTS.USER_EMAIL</label>
+            <div class="invalid-feedback">
+              TEXTS.PROVIDE_VALID_EMAIL
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="button_modal_cancel" class="btn btn-danger btn-sm waves-light" data-dismiss="modal" (click)="resetPasswordModal.hide()"
+            mdbRippleRadius>BUTTONS.CANCEL</button>
+          <button type="submit" id="button_modal_reset" class="btn btn-primary btn-sm waves-light" mdbRippleRadius (click)="resetPasswordModal.hide()">BUTTONS.RESET_PASSWORD</button>
+        </div>
+      </form>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: Contact form-->
