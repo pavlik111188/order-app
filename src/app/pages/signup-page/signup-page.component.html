@@ -1,0 +1,138 @@
+<div class="row mt-5 pt-5">
+  <div class="col align-self-start"></div>
+  <div class="col align-self-center">
+    <ng-container *ngTemplateOutlet="template"></ng-container>
+  </div>
+  <div class="col align-self-end"></div>
+</div>
+
+<!-- Form for the user -->
+<ng-template #formUser>
+  <div class="card" style="width: 24rem">
+
+    <div class="card-body mx-4">
+
+      <!--Header-->
+      <div class="text-center">
+        <h3 class="dark-grey-text mb-5">
+          <strong id="page_title">Signup as new user</strong>
+        </h3>
+      </div>
+
+      <!--Body-->
+      <form (ngSubmit)="signupWithCredentials()">
+        <div class="md-form">
+          <input mdbActive type="text" class="form-control" id="input_email">
+          <label>Your E-Mail</label>
+          <div class="invalid-feedback">
+            Please provide a valid E-Mail
+          </div>
+        </div>
+
+        <div class="md-form">
+          <input mdbActive type="password" class="form-control" id="input_password">
+          <label>Your password</label>
+          <div class="invalid-feedback">
+            Please provide a valid password
+          </div>
+        </div>
+
+        <div class="md-form">
+          <input mdbActive type="password" class="form-control" id="input_password_repeat">
+          <label>Confirm your password</label>
+          <p1 class="text-danger">
+            <br>
+          </p1>
+          <p class="font-small blue-text d-flex justify-content-end" data-toggle="modal" data-target="#basicExample" id="p_open_reset_modal">
+            <a class="blue-text ml-1" (click)="switchForms()">Signup as new client</a>
+          </p>
+        </div>
+
+        <div class="text-center mb-3">
+          <button type="submit" class="btn primary-color-dark btn-lg btn-block" id="button_login">Sign up</button>
+        </div>
+        <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> Or sign up with:
+        </p>
+
+      </form>
+
+      <div class="row my-3 d-flex justify-content-center">
+        <!--Facebook-->
+        <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a waves-effect waves-light" (click)="loginWithFacebook()"
+          id="button_login_with_facebook">
+          <i class="fa fa-facebook indigo-text text-center"></i>
+        </button>
+        <!--Twitter-->
+        <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a waves-effect waves-light" (click)="loginWithTwitter()"
+          id="button_login_with_twitter">
+          <i class="fa fa-twitter indigo-text"></i>
+        </button>
+        <!--Google +-->
+        <button type="button" class="btn btn-white btn-rounded z-depth-1a waves-effect waves-light" (click)="loginWithGoogle()" id="button_login_with_google">
+          <i class="fa fa-google-plus indigo-text"></i>
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</ng-template>
+
+<!-- Form for client -->
+<ng-template #formClient>
+  <div class="card" style="width: 24rem">
+
+    <div class="card-body mx-4">
+
+      <!--Header-->
+      <div class="text-center">
+        <h4 class="dark-grey-text mb-5">
+          <strong id="page_title">Signup as new client</strong>
+        </h4>
+      </div>
+
+      <!--Body-->
+      <form (ngSubmit)="signupWithCredentials()">
+        <div class="md-form">
+          <input mdbActive type="text" class="form-control" id="input_email">
+          <label>Your E-Mail</label>
+          <div class="invalid-feedback">
+            Please provide a valid E-Mail
+          </div>
+        </div>
+
+        <div class="md-form">
+          <input mdbActive type="text" class="form-control" id="input_clientUrl" (keyup)="checkclientUrl()" >
+          <label>Profile URL</label>
+          <div class="invalid-feedback">
+            Please provide a valid URL
+          </div>
+        </div>
+
+        <div class="md-form">
+          <input mdbActive type="password" class="form-control" id="input_password">
+          <label>Your password</label>
+          <div class="invalid-feedback">
+            Please provide a valid password
+          </div>
+        </div>
+
+        <div class="md-form">
+          <input mdbActive type="password" class="form-control" id="input_password">
+          <label>Confirm your password</label>
+          <p class="font-small blue-text d-flex justify-content-end" data-toggle="modal" data-target="#basicExample" id="p_open_reset_modal"
+            (click)="switchForms()">
+            <a class="blue-text ml-1">Signup as new user</a>
+          </p>
+          <p1 class="text-danger"></p1>
+        </div>
+
+        <div class="text-center mb-3">
+          <button type="submit" class="btn primary-color-dark btn-lg btn-block" id="button_login">Sign up</button>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+</ng-template>
