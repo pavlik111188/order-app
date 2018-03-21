@@ -1,10 +1,13 @@
 <header>
+  <!--/.Navbar-->
   <mdb-navbar SideClass="navbar navbar-dark mdb-color darken-4 fixed-top navbar-expand-lg scrolling-navbar" [containerInside]="true">
+    <!-- Navbar brand -->
     <logo>
       <a class="navbar-brand" routerLink="/" style="cursor: pointer">
         <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" height="30" alt="">
       </a>
     </logo>
+    <!-- Collapsible content -->
     <links>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item waves-light" mdbRippleRadius>
@@ -14,74 +17,19 @@
           <a class="nav-link">PRICING</a>
         </li>
         <li class="nav-item waves-light" mdbRippleRadius>
-          <a class="nav-link" (click)="form.show()" mdbRippleRadius>LOG IN</a>
+          <a class="nav-link" routerLink="/login" mdbRippleRadius>LOG IN</a>
+        </li>
+        <li class="nav-item waves-light" mdbRippleRadius>
+          <a class="nav-link" routerLink="/signup" mdbRippleRadius>REGISTER</a>
         </li>
         <li class="nav-item waves-light" mdbRippleRadius>
           <a class="nav-link">GET ACCESS NOW</a>
         </li>
       </ul>
     </links>
+    <!-- Collapsible content -->
   </mdb-navbar>
-  <!-- Main -->
-  <div class="view intro hm-purple-light" style="">
-    <div class="full-bg-img flex-center">
-      <div class="container text-center white-text wow fadeInUp">
-        <h2>This Navbar is fixed and transparent</h2>
-        <br>
-        <h5>It will always stay visible on the top, even when you scroll down</h5>
-        <p>Navbar's background will switch from transparent to solid color while scrolling down</p>
-        <br>
-        <p>Full page intro with background image will be always displayed in full screen mode, regardless of device </p>
-      </div>
-    </div>
-  </div>
-  <!-- /.Main -->
+  <!--/.Navbar-->
 </header>
 <!--Main Navigation-->
-
-<!--Modal: Login Form-->
-<div mdbModal #form="mdb-modal" class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog cascading-modal" role="document">
-    <!--Content-->
-    <div class="modal-content">
-
-      <!--Header-->
-      <div class="modal-header light-blue darken-3 white-text">
-        <h4 class="title"><i class="fa fa-user"></i> Log in</h4>
-        <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="form.hide()">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <!--Body-->
-      <div class="modal-body">
-        <div class="md-form form-sm">
-          <i class="fa fa-envelope prefix"></i>
-          <input mdbActive type="text" id="form30" class="form-control">
-          <label for="form30">Your email</label>
-        </div>
-
-        <div class="md-form form-sm">
-          <i class="fa fa-lock prefix"></i>
-          <input mdbActive type="password" id="form31" class="form-control">
-          <label for="form31">Your password</label>
-        </div>
-
-        <div class="text-center mt-2">
-          <button class="btn btn-info waves-light" mdbRippleRadius>Log in <i class="fa fa-sign-in ml-1"></i></button>
-        </div>
-
-      </div>
-      <!--Footer-->
-      <div class="modal-footer">
-        <div class="options text-center text-md-right mt-1">
-          <p>Not a member? <a href="#">Sign Up</a></p>
-          <p>Forgot <a href="#">Password?</a></p>
-        </div>
-        <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="form.hide()" mdbRippleRadius>Close</button>
-      </div>
-    </div>
-    <!--/.Content-->
-  </div>
-</div>
-<!--Modal: Login Form-->
 
