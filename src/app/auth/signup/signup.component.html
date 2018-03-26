@@ -15,43 +15,43 @@
       <!--Header-->
       <div class="text-center">
         <h3 class="dark-grey-text mb-5">
-          <strong id="page_title">Signup as new user</strong>
+          <strong id="page_title">{{ 'LABELS.SIGNUP_AS_USER' | translate }}</strong>
         </h3>
       </div>
 
       <!--Body-->
-      <form (ngSubmit)="signupWithCredentials()">
+      <form [formGroup]="signupForm" (ngSubmit)="signupWithCredentials()">
         <div class="md-form">
-          <input mdbActive type="text" class="form-control" id="input_email">
-          <label>Your E-Mail</label>
+          <input mdbActive type="text" class="form-control" formControlName="email" id="input_email">
+          <label>{{ 'INPUTS.USER_EMAIL' | translate }}</label>
           <div class="invalid-feedback">
             Please provide a valid E-Mail
           </div>
         </div>
 
         <div class="md-form">
-          <input mdbActive type="password" class="form-control" id="input_password">
-          <label>Your password</label>
+          <input mdbActive type="password" class="form-control" formControlName="password" id="input_password">
+          <label>{{ 'INPUTS.USER_PASSWORD' | translate }}</label>
           <div class="invalid-feedback">
             Please provide a valid password
           </div>
         </div>
 
         <div class="md-form">
-          <input mdbActive type="password" class="form-control" id="input_password_repeat">
-          <label>Confirm your password</label>
+          <input mdbActive type="password" class="form-control" formControlName="confirmPassword" id="input_password_repeat">
+          <label>{{ 'INPUTS.CONFIRM_PASSWORD' | translate }}</label>
           <p1 class="text-danger">
             <br>
           </p1>
           <p class="font-small blue-text d-flex justify-content-end" data-toggle="modal" data-target="#basicExample" id="p_open_reset_modal">
-            <a class="blue-text ml-1" (click)="switchForms()">Signup as new client</a>
+            <a class="blue-text ml-1" (click)="switchForms()">{{ 'LABELS.SIGNUP_AS_RESTAURANT' | translate }}</a>
           </p>
         </div>
 
         <div class="text-center mb-3">
-          <button type="submit" class="btn primary-color-dark btn-lg btn-block" id="button_login">Sign up</button>
+          <button type="submit" class="btn primary-color-dark btn-lg btn-block" id="button_login">{{ 'LABELS.SIGN_UP' | translate }}</button>
         </div>
-        <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> Or sign up with:
+        <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> {{ 'LABELS.SIGN_UP_WITH' | translate }}
         </p>
 
       </form>
@@ -79,7 +79,7 @@
 </ng-template>
 
 <!-- Form for client -->
-<ng-template #formClient>
+<ng-template #formRestaurant>
   <div class="card" style="width: 24rem">
 
     <div class="card-body mx-4">
@@ -87,48 +87,48 @@
       <!--Header-->
       <div class="text-center">
         <h4 class="dark-grey-text mb-5">
-          <strong id="page_title">Signup as new client</strong>
+          <strong id="page_title">{{ 'LABELS.SIGNUP_AS_RESTAURANT' | translate }}</strong>
         </h4>
       </div>
 
       <!--Body-->
-      <form (ngSubmit)="signupWithCredentials()">
+      <form [formGroup]="signupForm" (ngSubmit)="signupWithCredentials()">
         <div class="md-form">
-          <input mdbActive type="text" class="form-control" id="input_email">
-          <label>Your E-Mail</label>
+          <input mdbActive type="text" class="form-control" formControlName="email" id="input_email">
+          <label>{{ 'INPUTS.USER_EMAIL' | translate }}</label>
           <div class="invalid-feedback">
             Please provide a valid E-Mail
           </div>
         </div>
 
         <div class="md-form">
-          <input mdbActive type="text" class="form-control" id="input_clientUrl" (keyup)="checkclientUrl()" >
-          <label>Profile URL</label>
+          <input mdbActive type="text" class="form-control" formControlName="restaurantUrl" id="input_restaurantUrl" (keyup)="checkRestaurantUrl()" >
+          <label>{{ 'INPUTS.PROFILE_URL' | translate }}</label>
           <div class="invalid-feedback">
             Please provide a valid URL
           </div>
         </div>
 
         <div class="md-form">
-          <input mdbActive type="password" class="form-control" id="input_password">
-          <label>Your password</label>
+          <input mdbActive type="password" class="form-control" formControlName="password" id="input_password">
+          <label>{{ 'INPUTS.USER_PASSWORD' | translate }}</label>
           <div class="invalid-feedback">
             Please provide a valid password
           </div>
         </div>
 
         <div class="md-form">
-          <input mdbActive type="password" class="form-control" id="input_password">
-          <label>Confirm your password</label>
+          <input mdbActive type="password" class="form-control" formControlName="confirmPassword" id="input_password">
+          <label>{{ 'INPUTS.CONFIRM_PASSWORD' | translate }}</label>
           <p class="font-small blue-text d-flex justify-content-end" data-toggle="modal" data-target="#basicExample" id="p_open_reset_modal"
             (click)="switchForms()">
-            <a class="blue-text ml-1">Signup as new user</a>
+            <a class="blue-text ml-1">{{ 'LABELS.SIGNUP_AS_USER' | translate }}</a>
           </p>
           <p1 class="text-danger"></p1>
         </div>
 
         <div class="text-center mb-3">
-          <button type="submit" class="btn primary-color-dark btn-lg btn-block" id="button_login">Sign up</button>
+          <button type="submit" class="btn primary-color-dark btn-lg btn-block" id="button_login">{{ 'LABELS.SIGN_UP' | translate }}</button>
         </div>
       </form>
 

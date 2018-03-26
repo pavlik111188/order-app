@@ -3,15 +3,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Log } from 'ng2-logger';
 
 @Component({
-  selector: 'app-signup-page',
-  templateUrl: './signup-page.component.html',
-  styleUrls: ['./signup-page.component.scss']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
 })
 
-export class SignupPageComponent implements OnInit {
+export class SignupComponent implements OnInit {
 
   /** Logger */
-  private log = Log.create('SignupPageComponent');
+  private log = Log.create('SignupComponent');
 
   /** signup form */
   public signupForm: FormGroup;
@@ -22,13 +22,13 @@ export class SignupPageComponent implements OnInit {
   /** signup as user form ref */
   @ViewChild('formUser') formUser: TemplateRef<any>;
   /** signup as client form ref */
-  @ViewChild('formClient') formClient: TemplateRef<any>;
+  @ViewChild('formRestaurant') formRestaurant: TemplateRef<any>;
 
   constructor(private formBuilder: FormBuilder) {
     // Signup form
     this.signupForm = this.formBuilder.group({
       email: ['', Validators.email],
-      clientUrl: [''],
+      restaurantUrl: [''],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
     });
@@ -46,7 +46,7 @@ export class SignupPageComponent implements OnInit {
   switchForms() {
     this.signupForm.clearValidators();
     if (this.template === this.formUser) {
-      this.template = this.formClient;
+      this.template = this.formRestaurant;
     } else {
       this.template = this.formUser;
     }

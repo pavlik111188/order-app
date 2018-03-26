@@ -1,0 +1,22 @@
+<div class="row mt-5 pt-5">
+  <div class="col text-center">
+    <ng-container *ngTemplateOutlet="template"></ng-container>
+  </div>
+</div>
+
+
+<ng-template #loadingTmpl>
+
+</ng-template>
+
+<ng-template #dashboardUser>
+  <app-dashboard-user></app-dashboard-user>
+</ng-template>
+
+<ng-template #dashboardRestaurant>
+  <app-dashboard-restaurant></app-dashboard-restaurant>
+</ng-template>
+
+<ng-template #dashboardAdmin>
+  <app-dashboard-admin></app-dashboard-admin>
+</ng-template>
