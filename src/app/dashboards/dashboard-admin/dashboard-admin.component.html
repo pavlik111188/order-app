@@ -97,6 +97,8 @@
   </mdb-tab>
 </mdb-tabset>
 
+
+<!--Modal: Edit user form-->
 <div mdbModal #editUserModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
 
@@ -112,41 +114,7 @@
 
       <div class="modal-body mb-0">
         <form [formGroup]="userForm" (ngSubmit)="updateUser()">
-          <mdb-tabset [buttonClass]="'nav-tabs indigo'" [contentClass]="'card'">
 
-            <mdb-tab heading="Account data">
-              <div class="row">
-                <div class="col-12">
-                  <br>
-                </div>
-              </div>
-            </mdb-tab>
-
-            <mdb-tab heading="Contact">
-              <div class="row">
-                <div class="col-12">
-                  <br>
-                </div>
-              </div>
-            </mdb-tab>
-
-            <mdb-tab heading="Payment">
-              <div class="row">
-                <div class="col-12">
-                  <br>
-                </div>
-              </div>
-            </mdb-tab>
-
-            <mdb-tab heading="Subscription">
-              <div class="row">
-                <div class="col-12">
-                  <br>
-                </div>
-              </div>
-            </mdb-tab>
-
-          </mdb-tabset>
           <br>
           <button type="submit" class="btn indigo btn-lg btn-block waves-light" mdbRippleRadius>
             <i class="fa fa-refresh mr-1"></i>{{ 'BUTTONS.UPDATE_USER' | translate }}</button>
@@ -155,7 +123,9 @@
     </div>
   </div>
 </div>
+<!--Modal: Edit user form-->
 
+<!--Modal: Edit event form-->
 <div mdbModal #editEventModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
 
@@ -204,3 +174,4 @@
     </div>
   </div>
 </div>
+<!--Modal: Edit event form-->

@@ -33,6 +33,11 @@ export class DashboardAdminComponent implements OnInit {
   /** Printing house modal form */
   public printingHouseForm: FormGroup;
 
+  /** Edit user modal */
+  @ViewChild('editUserModal') public editUserModal;
+  /** Edit event modal */
+  @ViewChild('editEventModal') public editEventModal;
+
   constructor(private formBuilder: FormBuilder,
               translate: TranslateService) {
     translate.setDefaultLang('en');
@@ -94,8 +99,8 @@ export class DashboardAdminComponent implements OnInit {
    * Open edit event modal
    * @param  {Event} event Event
    */
-  editEvent() {
-
+  editEvent(event: Event) {
+    this.editEventModal.show();
   }
 
   /**
@@ -109,8 +114,8 @@ export class DashboardAdminComponent implements OnInit {
    * Open edit user modal
    * @param  {User} user User
    */
-  editUser() {
-
+  editUser(user: User) {
+    this.editUserModal.show();
   }
 
   /**

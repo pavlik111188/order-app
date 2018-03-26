@@ -62,14 +62,17 @@
     "WBESITE": "Сайт",
     "ZIP": "Индекс",
     "PASSWORD": "Пароль",
-    "DESCRIPTION": "Описание"
+    "DESCRIPTION": "Описание",
+    "LOCATION": "Местоположение",
+    "DATE": "Дата"
+
   },
   "BUTTONS": {
     "LOGIN": "Войти",
     "UPDATE_PROFILE": "Обновить профиль",
     "SAVE": "Сохранить",
-    "UPDATE_EVENT": "Update Event",
-    "UPDATE_USER": "Update User",
+    "UPDATE_EVENT": "Обновить событие",
+    "UPDATE_USER": "Обновить пользователя",
     "CANCEL": "Отмена",
     "RESET_PASSWORD": "Восстановить",
     "CONTINUE_SHOPPING": "Continue shopping",
@@ -119,8 +122,8 @@
     "SIGNUP_AS_RESTAURANT": "Зарегистрировать новый ресторан",
     "SIGNUP_AS_USER": "Зарегистрироваться",
     "TESTIMONIALS": "Customer Voices",
-    "EDIT_EVENT": "Edit Event",
-    "EDIT_USER": "Edit User",
+    "EDIT_EVENT": "Изменить событие",
+    "EDIT_USER": "Изменить пользователя",
     "CART_QUANTITY": "Quantity",
     "CART_PICTURE": "Picture",
     "CART_SIZE": "Size",
