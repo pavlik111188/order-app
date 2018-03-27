@@ -2,6 +2,8 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Log } from 'ng2-logger';
 
+//import {AuthService} from "../auth.service";
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -24,7 +26,9 @@ export class SignupComponent implements OnInit {
   /** signup as client form ref */
   @ViewChild('formRestaurant') formRestaurant: TemplateRef<any>;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+      //private auth: AuthService,
+      private formBuilder: FormBuilder) {
     // Signup form
     this.signupForm = this.formBuilder.group({
       email: ['', Validators.email],
@@ -54,7 +58,18 @@ export class SignupComponent implements OnInit {
 
   /** Signup with credentials */
   signupWithCredentials() {
-
+/*    if (this.signupForm.valid) {
+      this.auth
+          .register(this.signupForm.value.email, this.signupForm.value.password)
+          .then(() => {
+            this.log.d('Singed in with Email and password');
+            this.updateUser();
+          })
+          .catch(err => {
+            this.error = err;
+            this.log.er('error', err);
+          });
+    }*/
   }
 
   /** Signup with Google */

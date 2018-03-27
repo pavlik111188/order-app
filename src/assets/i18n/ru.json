@@ -163,9 +163,9 @@
   "TEXTS": {
     "PASSWORT_RESET_MODAL":
     "Введите адрес вашей электронной почты",
-    "PROVIDE_VALID_EMAIL": "Please provide a valid E-Mail",
-    "PROVIDE_VALID_PASSWORD": "Please provide a valid password",
-    "PROVIDE_VALID_URL": "Please provide a valid URL",
+    "PROVIDE_VALID_EMAIL": "Введите корректный E-Mail",
+    "PROVIDE_VALID_PASSWORD": "Введите корректный пароль",
+    "PROVIDE_VALID_URL": "Введите корректный URL",
     "LANDING_BESTPICTURES": "Our best pictures",
     "PAGE_NOT_FOUND": "Well, that's not what we expected!",
     "PAGE_NOT_FOUND_DESCRIPTION": "Looks like someone left the lens cap on...",

@@ -4,8 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { Log } from 'ng2-logger';
 
-import { Event } from '../event.model';
-import { User } from '../user.model';
+import { Event } from '../../shared/event.model';
+import { User } from '../../shared/user.model';
 
 @Component({
   selector: 'app-dashboard-admin',
