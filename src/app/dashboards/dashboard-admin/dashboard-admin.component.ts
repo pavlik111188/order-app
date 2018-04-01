@@ -4,8 +4,11 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { Log } from 'ng2-logger';
 
-import { Event } from '../../shared/event.model';
-import { User } from '../../shared/user.model';
+import { Event } from '../../shared/models/event.model';
+import { User } from '../../shared/models/user.model';
+import {UserService} from "../../shared/services/user.service";
+import {AuthService} from "../../shared/services/auth.service";
+import {ToastComponent} from "../../shared/toats/toast.component";
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -16,14 +19,14 @@ export class DashboardAdminComponent implements OnInit {
   /** Logger */
   private log = Log.create('DashboardAdminComponent');
 
+  /** Users */
+  users: User[] = [];
+
+  isLoading = true;
+
   events: Event[] = [
       new Event('pixbar', '11-12-2018', 'Senyavina str', '5'),
       new Event('pixbar', '11-12-2018', 'Senyavina str', '5')
-  ];
-
-  users: User[] = [
-    new User('Dima', 'postoliuk@hotmail.com', 'Admin', 'Gold'),
-    new User('Dima', 'postoliuk@hotmail.com', 'user', 'free')
   ];
 
   /** User modal form */
@@ -38,7 +41,10 @@ export class DashboardAdminComponent implements OnInit {
   /** Edit event modal */
   @ViewChild('editEventModal') public editEventModal;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(public auth: AuthService,
+              public toast: ToastComponent,
+              private userService: UserService,
+              private formBuilder: FormBuilder,
               translate: TranslateService) {
     translate.setDefaultLang('en');
     translate.use(translate.getBrowserLang());
@@ -93,6 +99,16 @@ export class DashboardAdminComponent implements OnInit {
   ngOnInit() {
     this.log.color = 'orange';
     this.log.d('Component initialized');
+
+    this.getUsers();
+  }
+
+  getUsers() {
+    this.userService.getUsers().subscribe(
+        data => this.users = data,
+        error => console.log(error),
+        () => this.isLoading = false
+    );
   }
 
   /**
@@ -101,13 +117,6 @@ export class DashboardAdminComponent implements OnInit {
    */
   editEvent(event: Event) {
     this.editEventModal.show();
-  }
-
-  /**
-   * Update event and hide modal
-   */
-  updateEvent() {
-
   }
 
   /**
@@ -128,23 +137,15 @@ export class DashboardAdminComponent implements OnInit {
   /**
    * Delete user
    */
-  deleteUser() {
-
+  deleteUser(user: User) {
+    if (window.confirm('Are you sure you want to delete ' + user.username + '?')) {
+      this.userService.deleteUser(user).subscribe(
+          data => this.toast.setMessage('user deleted successfully.', 'success'),
+          error => console.log(error),
+          () => this.getUsers()
+      );
+    }
   }
 
-  /**
-   * Update printing house
-   */
-  updatePrintingHouse() {
-
-  }
-
-  /**
-   * Sete deleted value
-   * @param  {Event} event Event
-   */
-  deleteEvent() {
-
-  }
 
 }

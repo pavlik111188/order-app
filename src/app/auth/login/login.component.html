@@ -1,3 +1,5 @@
+<app-toast [message]="toast.message"></app-toast>
+
 <div class="row mt-5 pt-5">
   <div class="col align-self-start"></div>
   <div class="col align-self-center">
@@ -16,9 +18,9 @@
         <form [formGroup]="loginForm" (ngSubmit)="loginWithCredentials()">
           <div class="md-form">
             <i class="fa fa-envelope prefix"></i>
-            <input mdbActive type="email" class="form-control" formControlName="email" id="input_email"
+            <input mdbActive type="email" class="form-control" formControlName="email" id="input_email" autofocus
                    [class.is-valid]="!loginForm.controls.email.errors" [class.is-invalid]="loginForm.controls.email.errors">
-            <label for="email">{{ 'INPUTS.USER_EMAIL' | translate }}</label>
+            <label for="input_email">{{ 'INPUTS.USER_EMAIL' | translate }}</label>
             <div class="invalid-feedback" *ngIf="loginForm.controls.email.errors">
               {{ 'TEXTS.PROVIDE_VALID_EMAIL' | translate }}
             </div>
@@ -28,7 +30,7 @@
             <i class="fa fa-lock prefix"></i>
             <input mdbActive type="password" class="form-control" formControlName="password" id="input_password"
                    [class.is-valid]="!loginForm.controls.password.errors" [class.is-invalid]="loginForm.controls.password.errors">
-            <label for="password">{{ 'INPUTS.USER_PASSWORD' | translate }}</label>
+            <label for="input_password">{{ 'INPUTS.USER_PASSWORD' | translate }}</label>
             <div class="invalid-feedback" *ngIf="loginForm.controls.password.errors">
               {{ 'TEXTS.PROVIDE_VALID_PASSWORD' | translate }}
             </div>
@@ -101,7 +103,7 @@
           <div class="md-form">
             <input mdbActive type="email" id="input_modal_email" class="form-control" formControlName="email"
                    [class.is-valid]="!resetPasswordForm.controls.email.errors" [class.is-invalid]="resetPasswordForm.controls.email.errors">
-            <label for="form1">{{ 'INPUTS.USER_EMAIL' | translate }}</label>
+            <label for="input_modal_email">{{ 'INPUTS.USER_EMAIL' | translate }}</label>
             <div class="invalid-feedback" *ngIf="resetPasswordForm.controls.email.errors">
               {{ 'TEXTS.PROVIDE_VALID_EMAIL' | translate }}
             </div>

@@ -1,8 +1,9 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Log } from 'ng2-logger';
 
-//import {AuthService} from "../auth.service";
+import { UserService } from '../../shared/services/user.service';
+import {ToastComponent} from "../../shared/toats/toast.component";
 
 @Component({
   selector: 'app-signup',
@@ -17,6 +18,20 @@ export class SignupComponent implements OnInit {
 
   /** signup form */
   public signupForm: FormGroup;
+  username = new FormControl('', [
+    Validators.required,
+    Validators.minLength(2),
+    Validators.maxLength(30),
+    Validators.pattern('[a-zA-Z0-9_-\\s]*')
+  ]);
+  email = new FormControl('', [
+    Validators.email
+  ]);
+  password = new FormControl('', [
+    Validators.required,
+    Validators.minLength(6)
+  ]);
+  role = '';
 
   /** template ref */
   public template: TemplateRef<any>;
@@ -27,16 +42,9 @@ export class SignupComponent implements OnInit {
   @ViewChild('formRestaurant') formRestaurant: TemplateRef<any>;
 
   constructor(
-      //private auth: AuthService,
-      private formBuilder: FormBuilder) {
-    // Signup form
-    this.signupForm = this.formBuilder.group({
-      email: ['', Validators.email],
-      restaurantUrl: [''],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
-    });
-  }
+      private formBuilder: FormBuilder,
+      public toast: ToastComponent,
+      private userService: UserService) { }
 
   /** Initi component */
   ngOnInit() {
@@ -44,6 +52,15 @@ export class SignupComponent implements OnInit {
     this.log.d('Component initialized');
 
     this.template = this.formUser;
+    this.role = 'user';
+
+    // Signup form
+    this.signupForm = this.formBuilder.group({
+      username: this.username,
+      email: this.email,
+      password: this.password,
+      role: this.role
+    });
   }
 
   /** Switch between signup forms */
@@ -58,18 +75,20 @@ export class SignupComponent implements OnInit {
 
   /** Signup with credentials */
   signupWithCredentials() {
-/*    if (this.signupForm.valid) {
-      this.auth
-          .register(this.signupForm.value.email, this.signupForm.value.password)
-          .then(() => {
+    console.log(this.signupForm.value);
+    if (this.signupForm.valid) {
+      this.userService.register(this.signupForm.value).subscribe(
+          res => {
             this.log.d('Singed in with Email and password');
-            this.updateUser();
-          })
-          .catch(err => {
-            this.error = err;
-            this.log.er('error', err);
-          });
-    }*/
+            this.toast.setMessage('you successfully registered!', 'success');
+            console.log(res)
+          },
+          error => {
+            this.log.er('error', error);
+            this.toast.setMessage('email already exists', 'danger')
+          }
+      );
+    }
   }
 
   /** Signup with Google */

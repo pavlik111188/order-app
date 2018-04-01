@@ -12,7 +12,7 @@ export class AppComponent implements OnInit{
   private log = Log.create('AppComponent');
 
   constructor(translate: TranslateService) {
-    translate.setDefaultLang('en');
+    translate.setDefaultLang('ru');
     translate.use(translate.getBrowserLang());
   }
 

@@ -1,3 +1,5 @@
+<app-toast [message]="toast.message"></app-toast>
+
 <div class="row mt-5 pt-5">
   <div class="col align-self-start"></div>
   <div class="col align-self-center">
@@ -15,14 +17,24 @@
       <!--Header-->
       <div class="text-center">
         <h3 class="dark-grey-text mb-5">
-          <strong id="page_title">{{ 'LABELS.SIGNUP_AS_USER' | translate }}</strong>
+          {{ 'LABELS.SIGNUP_AS_USER' | translate }}
         </h3>
       </div>
 
       <!--Body-->
       <form [formGroup]="signupForm" (ngSubmit)="signupWithCredentials()">
+
         <div class="md-form">
-          <input mdbActive type="text" class="form-control" formControlName="email" id="input_email"
+          <input mdbActive type="text" class="form-control" name="username" formControlName="username" autofocus
+                 [class.is-valid]="!signupForm.controls.username.errors" [class.is-invalid]="signupForm.controls.username.errors">
+          <label>{{ 'INPUTS.NAME' | translate }}</label>
+          <div class="invalid-feedback" *ngIf="signupForm.controls.username.errors">
+            {{ 'TEXTS.PROVIDE_VALID_NICKNAME' | translate }}
+          </div>
+        </div>
+
+        <div class="md-form">
+          <input mdbActive type="text" class="form-control" name="email" formControlName="email"
                  [class.is-valid]="!signupForm.controls.email.errors" [class.is-invalid]="signupForm.controls.email.errors">
           <label>{{ 'INPUTS.USER_EMAIL' | translate }}</label>
           <div class="invalid-feedback" *ngIf="signupForm.controls.email.errors">
@@ -31,7 +43,7 @@
         </div>
 
         <div class="md-form">
-          <input mdbActive type="password" class="form-control" formControlName="password" id="input_password"
+          <input mdbActive type="password" class="form-control" name="password" formControlName="password"
                  [class.is-valid]="!signupForm.controls.password.errors" [class.is-invalid]="signupForm.controls.password.errors">
           <label>{{ 'INPUTS.USER_PASSWORD' | translate }}</label>
           <div class="invalid-feedback" *ngIf="signupForm.controls.password.errors">
@@ -40,19 +52,17 @@
         </div>
 
         <div class="md-form">
-          <input mdbActive type="password" class="form-control" formControlName="confirmPassword" id="input_password_repeat"
-                 [class.is-valid]="!signupForm.controls.confirmPassword.errors" [class.is-invalid]="signupForm.controls.confirmPassword.errors">
+          <input mdbActive type="password" class="form-control">
           <label>{{ 'INPUTS.CONFIRM_PASSWORD' | translate }}</label>
-          <p class="text-danger">
-            <br>
-          </p>
-          <p class="font-small blue-text d-flex justify-content-end" data-toggle="modal" data-target="#basicExample" id="p_open_reset_modal">
-            <a class="blue-text ml-1" (click)="switchForms()">{{ 'LABELS.SIGNUP_AS_RESTAURANT' | translate }}</a>
-          </p>
+          <div class="invalid-feedback"></div>
         </div>
 
+        <p class="font-small blue-text d-flex justify-content-end" data-toggle="modal" data-target="#basicExample">
+          <a class="blue-text ml-1" (click)="switchForms()">{{ 'LABELS.SIGNUP_AS_RESTAURANT' | translate }}</a>
+        </p>
+
         <div class="text-center mb-3">
-          <button type="submit" class="btn primary-color-dark btn-lg btn-block" id="button_login">{{ 'LABELS.SIGN_UP' | translate }}</button>
+          <button type="submit" class="btn primary-color-dark btn-lg btn-block">{{ 'LABELS.SIGN_UP' | translate }}</button>
         </div>
         <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> {{ 'LABELS.SIGN_UP_WITH' | translate }}
         </p>
@@ -90,14 +100,24 @@
       <!--Header-->
       <div class="text-center">
         <h4 class="dark-grey-text mb-5">
-          <strong id="page_title">{{ 'LABELS.SIGNUP_AS_RESTAURANT' | translate }}</strong>
+          {{ 'LABELS.SIGNUP_AS_RESTAURANT' | translate }}
         </h4>
       </div>
 
       <!--Body-->
       <form [formGroup]="signupForm" (ngSubmit)="signupWithCredentials()">
+
         <div class="md-form">
-          <input mdbActive type="text" class="form-control" formControlName="email" id="input_email"
+          <input mdbActive type="text" class="form-control" name="username" formControlName="username" autofocus
+                 [class.is-valid]="!signupForm.controls.username.errors" [class.is-invalid]="signupForm.controls.username.errors">
+          <label>{{ 'INPUTS.NAME' | translate }}</label>
+          <div class="invalid-feedback" *ngIf="signupForm.controls.username.errors">
+            {{ 'TEXTS.PROVIDE_VALID_NICKNAME' | translate }}
+          </div>
+        </div>
+
+        <div class="md-form">
+          <input mdbActive type="text" class="form-control" name="email" formControlName="email"
                  [class.is-valid]="!signupForm.controls.email.errors" [class.is-invalid]="signupForm.controls.email.errors">
           <label>{{ 'INPUTS.USER_EMAIL' | translate }}</label>
           <div class="invalid-feedback">
@@ -106,16 +126,7 @@
         </div>
 
         <div class="md-form">
-          <input mdbActive type="text" class="form-control" formControlName="restaurantUrl" id="input_restaurantUrl" (keyup)="checkRestaurantUrl()"
-                 [class.is-valid]="!signupForm.controls.restaurantUrl.errors" [class.is-invalid]="signupForm.controls.restaurantUrl.errors">
-          <label>{{ 'INPUTS.PROFILE_URL' | translate }}</label>
-          <div class="invalid-feedback" *ngIf="signupForm.controls.restaurantUrl.errors">
-            {{ 'TEXTS.PROVIDE_VALID_URL' | translate }}
-          </div>
-        </div>
-
-        <div class="md-form">
-          <input mdbActive type="password" class="form-control" formControlName="password" id="input_password"
+          <input mdbActive type="password" class="form-control" name="password" formControlName="password"
                  [class.is-valid]="!signupForm.controls.password.errors" [class.is-invalid]="signupForm.controls.password.errors">
           <label>{{ 'INPUTS.USER_PASSWORD' | translate }}</label>
           <div class="invalid-feedback" *ngIf="signupForm.controls.password.errors">
@@ -124,14 +135,14 @@
         </div>
 
         <div class="md-form">
-          <input mdbActive type="password" class="form-control" formControlName="confirmPassword" id="input_password">
+          <input mdbActive type="password" class="form-control">
           <label>{{ 'INPUTS.CONFIRM_PASSWORD' | translate }}</label>
-          <p class="font-small blue-text d-flex justify-content-end" data-toggle="modal" data-target="#basicExample" id="p_open_reset_modal"
-            (click)="switchForms()">
-            <a class="blue-text ml-1">{{ 'LABELS.SIGNUP_AS_USER' | translate }}</a>
-          </p>
-          <p class="text-danger"></p>
         </div>
+
+        <p class="font-small blue-text d-flex justify-content-end" data-toggle="modal" data-target="#basicExample"
+           (click)="switchForms()">
+          <a class="blue-text ml-1">{{ 'LABELS.SIGNUP_AS_USER' | translate }}</a>
+        </p>
 
         <div class="text-center mb-3">
           <button type="submit" [disabled]="!signupForm.valid"

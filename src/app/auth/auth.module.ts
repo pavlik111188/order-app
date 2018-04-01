@@ -1,14 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {NgModule, NO_ERRORS_SCHEMA} from "@angular/core";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+import {AuthRoutingModule} from "./auth-routing.module";
+import {SharedModule} from "../shared/shared.module";
 import {LoginComponent} from "./login/login.component";
 import {SignupComponent} from "./signup/signup.component";
-import {AuthRoutingModule} from "./auth-routing.module";
 
 /**
  * Configures ngx-translate HttpLoader
@@ -24,12 +23,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         SignupComponent
     ],
     imports: [
-        BrowserModule,
-        MDBBootstrapModule.forRoot(),
-        FormsModule,
-        ReactiveFormsModule,
         AuthRoutingModule,
-        HttpClientModule,
+        SharedModule,
+        MDBBootstrapModule.forRoot(),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

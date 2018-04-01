@@ -1,13 +1,11 @@
-import {BrowserModule} from "@angular/platform-browser";
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core'
-import {ReactiveFormsModule} from "@angular/forms";
-import {CommonModule} from "@angular/common";
+import { HttpClient } from '@angular/common/http';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+import { SharedModule } from '../shared/shared.module';
 import {DashboardsComponent} from "./dashboards.component";
 import {DashboardAdminComponent} from "./dashboard-admin/dashboard-admin.component";
 import {DashboardRestaurantComponent} from "./dashboard-restaurant/dashboard-restaurant.component";
@@ -29,11 +27,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         DashboardUserComponent
     ],
     imports: [
-        BrowserModule,
+        SharedModule,
         MDBBootstrapModule.forRoot(),
-        CommonModule,
-        ReactiveFormsModule,
-        HttpClientModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

@@ -1,17 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { JwtModule } from '@auth0/angular-jwt';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from "./app-routing.module";
+import { SharedModule } from './shared/shared.module';
 import {CoreModule} from "./core/core.module";
 import {AuthModule} from "./auth/auth.module";
 import {DashboardsModule} from "./dashboards/dashboars.module";
+import {AuthService} from "./shared/services/auth.service";
+import {UserService} from "./shared/services/user.service";
 
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 /**
  * Configures ngx-translate HttpLoader
@@ -26,11 +31,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    MDBBootstrapModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
+    SharedModule,
+    MDBBootstrapModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -38,13 +41,21 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        // whitelistedDomains: ['localhost:3000', 'localhost:4200']
+      }
+    }),
     AuthModule,
     CoreModule,
     DashboardsModule,
-    FormsModule,
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [],
+  providers: [
+    AuthService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

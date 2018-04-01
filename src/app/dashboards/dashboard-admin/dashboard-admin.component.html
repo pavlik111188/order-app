@@ -1,4 +1,8 @@
-<mdb-tabset [buttonClass]="'nav-tabs indigo'" [contentClass]="'card'">
+<app-loading [condition]="isLoading"></app-loading>
+
+<app-toast [message]="toast.message"></app-toast>
+
+<mdb-tabset [buttonClass]="'nav-tabs indigo'" [contentClass]="'card'" *ngIf="!isLoading">
   <mdb-tab heading="{{ 'TABS.REVENUE' | translate }}">
     <div class="row">
       <div class="col-12">
@@ -47,7 +51,7 @@
       </div>
     </div>
   </mdb-tab>
-  <mdb-tab heading="{{ 'TABS.USER' | translate }}">
+  <mdb-tab heading="{{ 'TABS.USER' | translate }} ({{users.length}})">
     <div class="row">
       <div class="col-12">
         <br>
@@ -56,28 +60,31 @@
             <thead class="thead-default">
             <tr>
               <th>#</th>
+              <th>{{ 'DASHBOARD.NAME' | translate }}</th>
               <th>{{ 'DASHBOARD.EMAIL' | translate }}</th>
               <th>{{ 'DASHBOARD.ROLE' | translate }}</th>
-              <th>{{ 'DASHBOARD.SUBSCRIPTION' | translate }}</th>
               <th>{{ 'DASHBOARD.EDIT' | translate }}</th>
               <th>{{ 'TABLE.DELETE' | translate }}</th>
             </tr>
             </thead>
+            <tbody *ngIf="users.length === 0">
+            <tr>
+              <td colspan="4">There are no registered users.</td>
+            </tr>
+            </tbody>
             <tbody>
             <tr *ngFor="let user of users; let i = index">
               <th scope="row">{{ i + 1 }}</th>
+              <td>{{ user.username }}</td>
               <td>{{ user.email }}</td>
-              <td>
-                {{ 'DASHBOARD.ADMIN' | translate }}/{{ 'DASHBOARD.RESTAURANT' | translate }}/{{ 'DASHBOARD.USER' | translate }}
-              </td>
-              <td>{{ user.subscription }}</td>
+              <td>{{user.role}}</td>
               <td>
                 <a (click)="editUser(user)">
                   <i class="fa fa-pencil" aria-hidden="true"></i>
                 </a>
               </td>
               <td>
-                <a (click)="deleteUser(user)">
+                <a (click)="deleteUser(user)" [disabled]="auth.currentUser._id === user._id">
                   <i class="fa fa-trash" aria-hidden="true"></i>
                 </a>
               </td>

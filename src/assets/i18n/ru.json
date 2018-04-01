@@ -163,6 +163,7 @@
   "TEXTS": {
     "PASSWORT_RESET_MODAL":
     "Введите адрес вашей электронной почты",
+    "PROVIDE_VALID_NICKNAME": "Введите корректный никнейм",
     "PROVIDE_VALID_EMAIL": "Введите корректный E-Mail",
     "PROVIDE_VALID_PASSWORD": "Введите корректный пароль",
     "PROVIDE_VALID_URL": "Введите корректный URL",

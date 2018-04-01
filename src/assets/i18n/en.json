@@ -160,6 +160,7 @@
   "TEXTS": {
     "PASSWORT_RESET_MODAL":
       "To which E-Mail address should the password reset E-Mail be sent?",
+    "PROVIDE_VALID_NICKNAME": "Please provide a valid nickname",
     "PROVIDE_VALID_EMAIL": "Please provide a valid E-Mail",
     "PROVIDE_VALID_PASSWORD": "Please provide a valid password",
     "PROVIDE_VALID_URL": "Please provide a valid URL",
