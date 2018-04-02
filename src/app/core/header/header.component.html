@@ -10,20 +10,47 @@
     <!-- Collapsible content -->
     <links>
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item waves-light" mdbRippleRadius>
-          <a class="nav-link">TABLE RESERVATIONS</a>
+        <li class="nav-item" mdbRippleRadius>
+          <a class="nav-link waves-light">{{ 'NAV.RESERVATION' | translate }}</a>
         </li>
-        <li class="nav-item waves-light" mdbRippleRadius>
-          <a class="nav-link">PRICING</a>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbRippleRadius id="a_features">{{ 'NAV.FEATURES' | translate }} </a>
         </li>
-        <li class="nav-item waves-light" mdbRippleRadius>
-          <a class="nav-link" routerLink="/login" mdbRippleRadius>LOG IN</a>
+        <li class="nav-item" mdbRippleRadius>
+          <a class="nav-link waves-light">{{ 'NAV.PRICES' | translate }}</a>
         </li>
-        <li class="nav-item waves-light" mdbRippleRadius>
-          <a class="nav-link" routerLink="/signup" mdbRippleRadius>REGISTER</a>
+        <li class="nav-item">
+          <a class="nav-link" mdbRippleRadius>{{ 'NAV.SEARCH' | translate }} </a>
         </li>
-        <li class="nav-item waves-light" mdbRippleRadius>
-          <a class="nav-link">GET ACCESS NOW</a>
+        <li class="nav-item" mdbRippleRadius>
+          <a class="nav-link waves-effect waves-light" routerLink="/login" routerLinkActive="active" *ngIf="!auth.loggedIn" mdbRippleRadius>
+            <i class="fa fa-sign-in mr-1"></i>
+            <span class="clearfix d-none d-sm-inline-block">{{ 'NAV.SIGNIN' | translate }}</span>
+          </a>
+        </li>
+        <li class="nav-item" mdbRippleRadius>
+          <a class="nav-link waves-effect waves-light" routerLink="/signup" routerLinkActive="active" *ngIf="!auth.loggedIn" mdbRippleRadius>
+            <span class="clearfix d-none d-sm-inline-block">{{ 'NAV.SIGNUP' | translate }}</span>
+          </a>
+        </li>
+        <li class="nav-item" mdbRippleRadius>
+          <a class="nav-link waves-effect waves-light" routerLink="/dashboard" routerLinkActive="active" *ngIf="auth.loggedIn" mdbRippleRadius>
+            <i class="fa fa-tachometer mr-1"></i>
+            <span class="clearfix d-none d-sm-inline-block">Account ({{auth.currentUser.username}})</span>
+          </a>
+        </li>
+        <li class="nav-item" mdbRippleRadius>
+          <a class="nav-link waves-effect waves-light" routerLink="/dashboard" routerLinkActive="active" *ngIf="auth.loggedIn && auth.isAdmin" mdbRippleRadius>
+            <i class="fa fa-tachometer mr-1"></i>
+            <span class="clearfix d-none d-sm-inline-block">Admin</span>
+            Admin
+          </a>
+        </li>
+        <li class="nav-item" mdbRippleRadius>
+          <a class="nav-link waves-effect waves-light" routerLink="/logout" routerLinkActive="active" *ngIf="auth.loggedIn" mdbRippleRadius>
+            <i class="fa fa-sign-out mr-1"></i>
+            <span class="clearfix d-none d-sm-inline-block">{{ 'NAV.LOGOUT' | translate }}</span>
+          </a>
         </li>
       </ul>
     </links>

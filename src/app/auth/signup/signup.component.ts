@@ -1,5 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {Router} from "@angular/router";
+
 import { Log } from 'ng2-logger';
 
 import { UserService } from '../../shared/services/user.service';
@@ -43,6 +45,7 @@ export class SignupComponent implements OnInit {
 
   constructor(
       private formBuilder: FormBuilder,
+      private router: Router,
       public toast: ToastComponent,
       private userService: UserService) { }
 
@@ -81,6 +84,7 @@ export class SignupComponent implements OnInit {
           res => {
             this.log.d('Singed in with Email and password');
             this.toast.setMessage('you successfully registered!', 'success');
+            this.router.navigate(['/login']);
             console.log(res)
           },
           error => {

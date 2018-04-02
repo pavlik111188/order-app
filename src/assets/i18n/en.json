@@ -21,6 +21,7 @@
     "HOME": "Home",
     "LOGOUT": "Log out",
     "EVENTS": "Events",
+    "SEARCH": "Search",
     "SEARCH_RESTAURANTS": "Restaurants near you",
     "SEARCH_EVENTS": "Events",
     "SIGNIN": "Sign in",
@@ -34,7 +35,8 @@
     "CART_SIZE": "Size",
     "CART_PRICE": "Price",
     "CART_TYPE": "Type",
-    "CART_ITEM": "Item"
+    "CART_ITEM": "Item",
+    "RESERVATION": "Table reservation"
   },
   "INPUTS": {
     "ABOUT_YOU": "About you",

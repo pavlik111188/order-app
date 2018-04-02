@@ -8,6 +8,7 @@ import {AuthRoutingModule} from "./auth-routing.module";
 import {SharedModule} from "../shared/shared.module";
 import {LoginComponent} from "./login/login.component";
 import {SignupComponent} from "./signup/signup.component";
+import {LogoutComponent} from "./logout/logout.component";
 
 /**
  * Configures ngx-translate HttpLoader
@@ -20,7 +21,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
     declarations: [
         LoginComponent,
-        SignupComponent
+        SignupComponent,
+        LogoutComponent
     ],
     imports: [
         AuthRoutingModule,
