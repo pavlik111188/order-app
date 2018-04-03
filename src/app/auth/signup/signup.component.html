@@ -3,154 +3,102 @@
 <div class="row mt-5 pt-5">
   <div class="col align-self-start"></div>
   <div class="col align-self-center">
-    <ng-container *ngTemplateOutlet="template"></ng-container>
+    <div class="card" style="width: 24rem">
+
+      <div class="card-body mx-4">
+
+        <!--Header-->
+        <div class="text-center">
+          <h3 class="dark-grey-text mb-5">
+            {{ 'LABELS.SIGNUP_AS_USER' | translate }}
+          </h3>
+        </div>
+
+        <!--Body-->
+        <form [formGroup]="signupForm" (ngSubmit)="signupWithCredentials(signupForm)">
+
+          <div class="md-form">
+            <input mdbActive type="text" id="input_username" class="form-control" name="username" formControlName="username" autofocus>
+            <label for="input_username">{{ 'INPUTS.NAME' | translate }}</label>
+            <div *ngIf="formErrors.username.length > 0">
+              <div class="alert alert-danger" *ngFor="let error of formErrors.username">
+                {{ error | translate }}
+              </div>
+            </div>
+          </div>
+
+          <div class="md-form">
+            <input mdbActive type="text" id="input_email" class="form-control" name="email" formControlName="email">
+            <label  for="input_email">{{ 'INPUTS.USER_EMAIL' | translate }}</label>
+            <div *ngIf="formErrors.email.length > 0">
+              <div class="alert alert-danger" *ngFor="let error of formErrors.email">
+                {{ error | translate }}
+              </div>
+            </div>
+          </div>
+
+          <div class="md-form">
+            <input mdbActive type="password" id="input_password" class="form-control" name="password" formControlName="password">
+            <label for="input_password">{{ 'INPUTS.USER_PASSWORD' | translate }}</label>
+            <div *ngIf="formErrors.password.length > 0">
+              <div class="alert alert-danger" *ngFor="let error of formErrors.password">
+                {{ error | translate }}
+              </div>
+            </div>
+          </div>
+
+          <div class="md-form">
+            <input mdbActive type="password" id="input_password_confirm" class="form-control" formControlName="passwordConfirm">
+            <label for="input_password_confirm">{{ 'INPUTS.CONFIRM_PASSWORD' | translate }}</label>
+            <div *ngIf="formErrors.passwordConfirm.length > 0">
+              <div  class="alert alert-danger" *ngFor="let error of formErrors.passwordConfirm">
+                {{ error | translate }}
+              </div>
+            </div>
+          </div>
+
+          <div class="md-form">
+            <select mdbActive class="custom-select" id="select_role" name="role" formControlName="role">
+              <option value="" selected disabled>Role</option>
+              <option value="user">User</option>
+              <option value="client">Client</option>
+              <option value="admin">Admin</option>
+            </select>
+            <div *ngIf="formErrors.role.length > 0">
+              <div  class="alert alert-danger" *ngFor="let error of formErrors.role">
+                {{ error | translate }}
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mb-3">
+            <button type="submit" class="btn primary-color-dark btn-lg btn-block">{{ 'LABELS.SIGN_UP' | translate }}</button>
+          </div>
+          <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> {{ 'LABELS.SIGN_UP_WITH' | translate }}
+          </p>
+
+        </form>
+
+        <div class="row my-3 d-flex justify-content-center">
+          <!--Facebook-->
+          <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a waves-effect waves-light" (click)="loginWithFacebook()"
+                  id="button_login_with_facebook">
+            <i class="fa fa-facebook indigo-text text-center"></i>
+          </button>
+          <!--Twitter-->
+          <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a waves-effect waves-light" (click)="loginWithTwitter()"
+                  id="button_login_with_twitter">
+            <i class="fa fa-twitter indigo-text"></i>
+          </button>
+          <!--Google +-->
+          <button type="button" class="btn btn-white btn-rounded z-depth-1a waves-effect waves-light" (click)="loginWithGoogle()" id="button_login_with_google">
+            <i class="fa fa-google-plus indigo-text"></i>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
   </div>
   <div class="col align-self-end"></div>
 </div>
-
-<!-- Form for the user -->
-<ng-template #formUser>
-  <div class="card" style="width: 24rem">
-
-    <div class="card-body mx-4">
-
-      <!--Header-->
-      <div class="text-center">
-        <h3 class="dark-grey-text mb-5">
-          {{ 'LABELS.SIGNUP_AS_USER' | translate }}
-        </h3>
-      </div>
-
-      <!--Body-->
-      <form [formGroup]="signupForm" (ngSubmit)="signupWithCredentials()">
-
-        <div class="md-form">
-          <input mdbActive type="text" class="form-control" name="username" formControlName="username" autofocus
-                 [class.is-valid]="!signupForm.controls.username.errors" [class.is-invalid]="signupForm.controls.username.errors">
-          <label>{{ 'INPUTS.NAME' | translate }}</label>
-          <div class="invalid-feedback" *ngIf="signupForm.controls.username.errors">
-            {{ 'TEXTS.PROVIDE_VALID_NICKNAME' | translate }}
-          </div>
-        </div>
-
-        <div class="md-form">
-          <input mdbActive type="text" class="form-control" name="email" formControlName="email"
-                 [class.is-valid]="!signupForm.controls.email.errors" [class.is-invalid]="signupForm.controls.email.errors">
-          <label>{{ 'INPUTS.USER_EMAIL' | translate }}</label>
-          <div class="invalid-feedback" *ngIf="signupForm.controls.email.errors">
-            {{ 'TEXTS.PROVIDE_VALID_EMAIL' | translate }}
-          </div>
-        </div>
-
-        <div class="md-form">
-          <input mdbActive type="password" class="form-control" name="password" formControlName="password"
-                 [class.is-valid]="!signupForm.controls.password.errors" [class.is-invalid]="signupForm.controls.password.errors">
-          <label>{{ 'INPUTS.USER_PASSWORD' | translate }}</label>
-          <div class="invalid-feedback" *ngIf="signupForm.controls.password.errors">
-            {{ 'TEXTS.PROVIDE_VALID_PASSWORD' | translate }}
-          </div>
-        </div>
-
-        <div class="md-form">
-          <input mdbActive type="password" class="form-control">
-          <label>{{ 'INPUTS.CONFIRM_PASSWORD' | translate }}</label>
-          <div class="invalid-feedback"></div>
-        </div>
-
-        <p class="font-small blue-text d-flex justify-content-end" data-toggle="modal" data-target="#basicExample">
-          <a class="blue-text ml-1" (click)="switchForms()">{{ 'LABELS.SIGNUP_AS_RESTAURANT' | translate }}</a>
-        </p>
-
-        <div class="text-center mb-3">
-          <button type="submit" class="btn primary-color-dark btn-lg btn-block">{{ 'LABELS.SIGN_UP' | translate }}</button>
-        </div>
-        <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> {{ 'LABELS.SIGN_UP_WITH' | translate }}
-        </p>
-
-      </form>
-
-      <div class="row my-3 d-flex justify-content-center">
-        <!--Facebook-->
-        <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a waves-effect waves-light" (click)="loginWithFacebook()"
-          id="button_login_with_facebook">
-          <i class="fa fa-facebook indigo-text text-center"></i>
-        </button>
-        <!--Twitter-->
-        <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a waves-effect waves-light" (click)="loginWithTwitter()"
-          id="button_login_with_twitter">
-          <i class="fa fa-twitter indigo-text"></i>
-        </button>
-        <!--Google +-->
-        <button type="button" class="btn btn-white btn-rounded z-depth-1a waves-effect waves-light" (click)="loginWithGoogle()" id="button_login_with_google">
-          <i class="fa fa-google-plus indigo-text"></i>
-        </button>
-      </div>
-
-    </div>
-
-  </div>
-</ng-template>
-
-<!-- Form for client -->
-<ng-template #formRestaurant>
-  <div class="card" style="width: 24rem">
-
-    <div class="card-body mx-4">
-
-      <!--Header-->
-      <div class="text-center">
-        <h4 class="dark-grey-text mb-5">
-          {{ 'LABELS.SIGNUP_AS_RESTAURANT' | translate }}
-        </h4>
-      </div>
-
-      <!--Body-->
-      <form [formGroup]="signupForm" (ngSubmit)="signupWithCredentials()">
-
-        <div class="md-form">
-          <input mdbActive type="text" class="form-control" name="username" formControlName="username" autofocus
-                 [class.is-valid]="!signupForm.controls.username.errors" [class.is-invalid]="signupForm.controls.username.errors">
-          <label>{{ 'INPUTS.NAME' | translate }}</label>
-          <div class="invalid-feedback" *ngIf="signupForm.controls.username.errors">
-            {{ 'TEXTS.PROVIDE_VALID_NICKNAME' | translate }}
-          </div>
-        </div>
-
-        <div class="md-form">
-          <input mdbActive type="text" class="form-control" name="email" formControlName="email"
-                 [class.is-valid]="!signupForm.controls.email.errors" [class.is-invalid]="signupForm.controls.email.errors">
-          <label>{{ 'INPUTS.USER_EMAIL' | translate }}</label>
-          <div class="invalid-feedback">
-            {{ 'TEXTS.PROVIDE_VALID_EMAIL' | translate }}
-          </div>
-        </div>
-
-        <div class="md-form">
-          <input mdbActive type="password" class="form-control" name="password" formControlName="password"
-                 [class.is-valid]="!signupForm.controls.password.errors" [class.is-invalid]="signupForm.controls.password.errors">
-          <label>{{ 'INPUTS.USER_PASSWORD' | translate }}</label>
-          <div class="invalid-feedback" *ngIf="signupForm.controls.password.errors">
-            {{ 'TEXTS.PROVIDE_VALID_PASSWORD' | translate }}
-          </div>
-        </div>
-
-        <div class="md-form">
-          <input mdbActive type="password" class="form-control">
-          <label>{{ 'INPUTS.CONFIRM_PASSWORD' | translate }}</label>
-        </div>
-
-        <p class="font-small blue-text d-flex justify-content-end" data-toggle="modal" data-target="#basicExample"
-           (click)="switchForms()">
-          <a class="blue-text ml-1">{{ 'LABELS.SIGNUP_AS_USER' | translate }}</a>
-        </p>
-
-        <div class="text-center mb-3">
-          <button type="submit" [disabled]="!signupForm.valid"
-                  class="btn primary-color-dark btn-lg btn-block" id="button_login">{{ 'LABELS.SIGN_UP' | translate }}</button>
-        </div>
-      </form>
-
-    </div>
-
-  </div>
-</ng-template>
