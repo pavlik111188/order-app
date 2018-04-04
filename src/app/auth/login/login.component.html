@@ -18,22 +18,25 @@
         <form [formGroup]="loginForm" (ngSubmit)="loginWithCredentials()">
           <div class="md-form">
             <i class="fa fa-envelope prefix"></i>
-            <input mdbActive type="email" class="form-control" formControlName="email" id="input_email" autofocus
-                   [class.is-valid]="!loginForm.controls.email.errors" [class.is-invalid]="loginForm.controls.email.errors">
+            <input mdbActive type="email" class="form-control" formControlName="email" id="input_email" autofocus>
             <label for="input_email">{{ 'INPUTS.USER_EMAIL' | translate }}</label>
-            <div class="invalid-feedback" *ngIf="loginForm.controls.email.errors">
-              {{ 'TEXTS.PROVIDE_VALID_EMAIL' | translate }}
+            <div *ngIf="formErrors.email.length > 0">
+              <div class="alert alert-danger" *ngFor="let error of formErrors.email">
+                {{ error | translate }}
+              </div>
             </div>
           </div>
 
           <div class="md-form pb-3">
             <i class="fa fa-lock prefix"></i>
-            <input mdbActive type="password" class="form-control" formControlName="password" id="input_password"
-                   [class.is-valid]="!loginForm.controls.password.errors" [class.is-invalid]="loginForm.controls.password.errors">
+            <input mdbActive type="password" class="form-control" formControlName="password" id="input_password">
             <label for="input_password">{{ 'INPUTS.USER_PASSWORD' | translate }}</label>
-            <div class="invalid-feedback" *ngIf="loginForm.controls.password.errors">
-              {{ 'TEXTS.PROVIDE_VALID_PASSWORD' | translate }}
+            <div *ngIf="formErrors.password.length > 0">
+              <div class="alert alert-danger" *ngFor="let error of formErrors.password">
+                {{ error | translate }}
+              </div>
             </div>
+
             <p class="font-small blue-text d-flex justify-content-end" (click)="resetPasswordModal.show()" id="open_reset_modal">
               <a class="blue-text ml-1">{{ 'LABELS.FORGOT_PASSWORD' | translate }}</a>
             </p>
@@ -101,8 +104,7 @@
         <div class="modal-body">
           <p>{{ 'TEXTS.PASSWORT_RESET_MODAL' | translate }}</p>
           <div class="md-form">
-            <input mdbActive type="email" id="input_modal_email" class="form-control" formControlName="email"
-                   [class.is-valid]="!resetPasswordForm.controls.email.errors" [class.is-invalid]="resetPasswordForm.controls.email.errors">
+            <input mdbActive type="email" id="input_modal_email" class="form-control" formControlName="email">
             <label for="input_modal_email">{{ 'INPUTS.USER_EMAIL' | translate }}</label>
             <div class="invalid-feedback" *ngIf="resetPasswordForm.controls.email.errors">
               {{ 'TEXTS.PROVIDE_VALID_EMAIL' | translate }}

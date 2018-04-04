@@ -23,15 +23,7 @@ export class LoginComponent implements OnInit {
    * Login form group
    */
   public loginForm: FormGroup;
-  email = new FormControl('', [
-    Validators.required,
-    Validators.minLength(3),
-    Validators.maxLength(100)
-  ]);
-  password = new FormControl('', [
-    Validators.required,
-    Validators.minLength(6)
-  ]);
+
   /**
    * reset password form group
    */
@@ -41,11 +33,6 @@ export class LoginComponent implements OnInit {
               private formBuilder: FormBuilder,
               private router: Router,
               public toast: ToastComponent) {
-    // Init login form
-    this.loginForm = this.formBuilder.group({
-      email: ['', Validators.email],
-      password: ['', Validators.required]
-    });
 
     // Init reset password form
     this.resetPasswordForm = this.formBuilder.group({
@@ -57,14 +44,67 @@ export class LoginComponent implements OnInit {
     this.log.color = 'orange';
     this.log.d('Component initialized');
 
+    // Init login form
+    this.buildLoginForm();
+
     if (this.auth.loggedIn) {
       this.router.navigate(['dashboard']);
     }
-    this.loginForm = this.formBuilder.group({
-      email: this.email,
-      password: this.password
-    });
   }
+
+  buildLoginForm(): void {
+    this.loginForm = this.formBuilder.group({
+      'email' : [null, [
+        Validators.required,
+        Validators.email
+      ]
+      ],
+      'password' : [null, [
+        Validators.required,
+        Validators.minLength(6)
+      ]
+      ]
+    });
+
+    this.loginForm.valueChanges
+        .subscribe(data => this.onValueChanged(data));
+
+    this.onValueChanged(); // (re)set validation messages now
+  }
+
+  onValueChanged(data?: any) {
+    if (!this.loginForm) { return; }
+    const form = this.loginForm;
+
+    for (const field in this.formErrors) {
+      // clear previous error message (if any)
+      this.formErrors[field] = [];
+      const control = form.get(field);
+
+      if (control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field];
+        for (const key in control.errors) {
+          this.formErrors[field].push(messages[key]);
+        }
+      }
+    }
+  }
+
+  formErrors = {
+    'email': [],
+    'password': []
+  };
+
+  validationMessages = {
+    'email': {
+      'required': 'TEXTS.REQ_EMAIL',
+      'email': 'TEXTS.PROVIDE_VALID_EMAIL'
+    },
+    'password': {
+      'required': 'TEXTS.PROVIDE_VALID_PASSWORD',
+      'minlength': 'TEXTS.REQ_MINLENGTH_PASSWORD'
+    }
+  };
 
   /**
    * Login with credentials
