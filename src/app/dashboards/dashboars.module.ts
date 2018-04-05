@@ -8,7 +8,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SharedModule } from '../shared/shared.module';
 import {DashboardsComponent} from "./dashboards.component";
 import {DashboardAdminComponent} from "./dashboard-admin/dashboard-admin.component";
-import {DashboardRestaurantComponent} from "./dashboard-restaurant/dashboard-restaurant.component";
+import {DashboardClientComponent} from "./dashboard-client/dashboard-client.component";
 import {DashboardUserComponent} from "./dashboard-user/dashboard-user.component";
 
 /**
@@ -23,7 +23,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     declarations: [
         DashboardsComponent,
         DashboardAdminComponent,
-        DashboardRestaurantComponent,
+        DashboardClientComponent,
         DashboardUserComponent
     ],
     imports: [
