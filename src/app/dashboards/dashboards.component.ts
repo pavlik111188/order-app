@@ -1,6 +1,10 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Log } from 'ng2-logger';
 
+import { User } from '../shared/models/user.model';
+import {UserService} from "../shared/services/user.service";
+import {AuthService} from "../shared/services/auth.service";
+
 @Component({
   selector: 'app-dashboards',
   templateUrl: 'dashboards.component.html',
@@ -9,6 +13,9 @@ import { Log } from 'ng2-logger';
 export class DashboardsComponent implements OnInit {
   /** Logger */
   private log = Log.create('DashboardsComponent');
+
+  /** db user */
+  public user: User;
 
   /** Template ref  */
   public template: TemplateRef<any>;
@@ -22,13 +29,27 @@ export class DashboardsComponent implements OnInit {
   /** TemplateRef dashboard admin */
   @ViewChild('dashboardAdmin') dashboardAdmin: TemplateRef<any>;
 
-  constructor() { }
+  constructor(private auth: AuthService,
+              private userService: UserService) { }
 
   ngOnInit() {
     this.log.color = 'orange';
     this.log.d('Component initialized');
 
-    this.template = this.dashboardAdmin;
+    this.template = this.loadingTmpl;
+    this.userService.getUser(this.auth.currentUser).subscribe((user) => {
+      if (user) {
+        this.user = user;
+        this.log.d('Loaded user', this.user);
+        if (this.user.role.admin) {
+          this.template = this.dashboardAdmin;
+        } else if (this.user.role.user) {
+          this.template = this.dashboardUser;
+        } else {
+          this.template = this.dashboardRestaurant;
+        }
+      }
+    });
   }
 
 }
