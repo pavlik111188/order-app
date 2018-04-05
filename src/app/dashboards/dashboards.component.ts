@@ -41,11 +41,15 @@ export class DashboardsComponent implements OnInit {
       if (user) {
         this.user = user;
         this.log.d('Loaded user', this.user);
-        if (this.user.role.admin) {
+        console.log(this.user === 'admin');
+        if (this.user.role === 'admin') {
+          console.log('admin');
           this.template = this.dashboardAdmin;
-        } else if (this.user.role.user) {
+        } else if (this.user.role === 'user') {
+          console.log('user');
           this.template = this.dashboardUser;
         } else {
+          console.log('client');
           this.template = this.dashboardRestaurant;
         }
       }
