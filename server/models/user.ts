@@ -2,10 +2,15 @@ import * as bcrypt from 'bcryptjs';
 import * as mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
-  username: String,
-  email: { type: String, unique: true, lowercase: true, trim: true },
-  password: String,
-  role: String
+  email: { type: String, required: true, unique: true, lowercase: true, trim: true },
+  password: { type: String, required: true },
+  first_name: String,
+  last_name: String,
+  phone: String,
+  birthday: Date,
+  role: { type: Array, default: ['user'] }, // ['user', 'client', 'admin']
+  social_network: [{ network: String, token: String }],
+  location: [{ country: String, city: String, zip: String, street: String, coordinates: String}]
 });
 
 // Before saving the user, hash the password
