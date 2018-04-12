@@ -40,13 +40,6 @@ export class SignupComponent implements OnInit {
   /** Signup forms validation */
   buildSignupForm(): void {
     this.signupForm = this.fb.group({
-      'username' : [null, [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(30),
-        Validators.pattern('[a-zA-Z0-9_-\\s]*')
-      ]
-    ],
     'email' : [null, [
       Validators.required,
       Validators.email
@@ -97,7 +90,6 @@ export class SignupComponent implements OnInit {
 
   /** Errors array */
   formErrors = {
-    'username': [],
     'email': [],
     'password': [],
     'passwordConfirm': [],
@@ -106,12 +98,6 @@ export class SignupComponent implements OnInit {
 
   /** Validation messages */
   validationMessages = {
-    'username': {
-      'required': 'TEXTS.PROVIDE_VALID_NICKNAME',
-      'minlength': 'TEXTS.REQ_MINLENGTH_NICKNAME',
-      'maxLength': 'TEXTS.REQ_MAXLENGTH_NICKNAME',
-      'pattern': 'TEXTS.REQ_PATTERN_NICKNAME',
-    },
     'email': {
       'required': 'TEXTS.REQ_EMAIL',
       'email': 'TEXTS.PROVIDE_VALID_EMAIL'

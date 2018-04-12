@@ -5,7 +5,6 @@ import { UserRoles } from '../interfaces/user-roles';
  */
 export class User {
     _id?: string;
-    username?: string;
     email?: string;
     role?: UserRoles;
 }
