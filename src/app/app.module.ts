@@ -4,6 +4,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {StoreModule} from "@ngrx/store";
 
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from "./app-routing.module";
@@ -13,6 +14,8 @@ import {AuthModule} from "./auth/auth.module";
 import {DashboardsModule} from "./dashboards/dashboars.module";
 import {AuthService} from "./shared/services/auth.service";
 import {UserService} from "./shared/services/user.service";
+import { reducers } from './store/app.reducers';
+
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -50,6 +53,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AuthModule,
     CoreModule,
     DashboardsModule,
+    StoreModule.forRoot(reducers)
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [
