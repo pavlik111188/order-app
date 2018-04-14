@@ -138,7 +138,7 @@ export class DashboardAdminComponent implements OnInit {
    * Delete user
    */
   deleteUser(user: User) {
-    if (window.confirm('Are you sure you want to delete ' + user.username + '?')) {
+    if (window.confirm('Are you sure you want to delete ' + user.email + '?')) {
       this.userService.deleteUser(user).subscribe(
           data => this.toast.setMessage('user deleted successfully.', 'success'),
           error => console.log(error),

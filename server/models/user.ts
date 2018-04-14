@@ -16,6 +16,7 @@ const userSchema = new mongoose.Schema({
 // Before saving the user, hash the password
 userSchema.pre('save', function(next) {
   const user = this;
+  // console.log('user: pre ', user);
   if (!user.isModified('password')) { return next(); }
   bcrypt.genSalt(10, function(err, salt) {
     if (err) { return next(err); }
@@ -25,6 +26,7 @@ userSchema.pre('save', function(next) {
       next();
     });
   });
+  // if (user.role) { user.role = [user.role]; }
 });
 
 userSchema.methods.comparePassword = function(candidatePassword, callback) {
