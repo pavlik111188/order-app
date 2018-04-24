@@ -24,8 +24,8 @@ export class DashboardsComponent implements OnInit {
   @ViewChild('loadingTmpl') loadingTmpl: TemplateRef<any>;
   /** TemplateRef dashboard user */
   @ViewChild('dashboardUser') dashboardUser: TemplateRef<any>;
-  /** TemplateRef dashboard restaurant */
-  @ViewChild('dashboardRestaurant') dashboardRestaurant: TemplateRef<any>;
+  /** TemplateRef dashboard client */
+  @ViewChild('dashboardClient') dashboardClient: TemplateRef<any>;
   /** TemplateRef dashboard admin */
   @ViewChild('dashboardAdmin') dashboardAdmin: TemplateRef<any>;
 
@@ -50,7 +50,7 @@ export class DashboardsComponent implements OnInit {
           this.template = this.dashboardUser;
         } else {
           console.log('client');
-          this.template = this.dashboardRestaurant;
+          this.template = this.dashboardClient;
         }
       }
     });

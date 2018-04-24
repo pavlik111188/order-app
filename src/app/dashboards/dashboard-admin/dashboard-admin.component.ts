@@ -75,25 +75,6 @@ export class DashboardAdminComponent implements OnInit {
       public: [false, Validators.required],
       ratings: [0, Validators.required]
     });
-    this.printingHouseForm = this.formBuilder.group({
-      address: this.formBuilder.group({
-        city: ['', Validators.required],
-        email: ['', Validators.email],
-        name: ['', Validators.required],
-        phone: ['', Validators.required],
-        street: ['', Validators.required],
-        streetnumber: ['', Validators.required],
-        zip: ['', Validators.required]
-      }),
-      paymentInformation: this.formBuilder.group({
-        iban: ['', Validators.required],
-        bic: ['', Validators.required],
-        accountOwner: ['', Validators.required]
-      }),
-      id: ['', Validators.required],
-      uid: ['', Validators.required],
-      isDefault: [true, Validators.required]
-    });
   }
 
   ngOnInit() {

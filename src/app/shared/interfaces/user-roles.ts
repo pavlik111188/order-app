@@ -9,7 +9,7 @@ export interface UserRoles {
     /**
      * Restaurant role
      */
-    restaurant?: boolean;
+    client?: boolean;
     /**
      * User role
      */

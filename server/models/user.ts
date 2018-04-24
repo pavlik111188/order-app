@@ -8,7 +8,8 @@ const userSchema = new mongoose.Schema({
   last_name: String,
   phone: String,
   birthday: Date,
-  role: { type: Array, default: ['user'] }, // ['user', 'client', 'admin']
+  //role: { type: Array, default: ['user'] }, // ['user', 'client', 'admin']
+  role: String,
   social_network: [{ network: String, token: String }],
   location: [{ country: String, city: String, zip: String, street: String, coordinates: String}]
 });
