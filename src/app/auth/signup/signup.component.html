@@ -18,6 +18,16 @@
         <form [formGroup]="signupForm" (ngSubmit)="signupWithCredentials(signupForm)">
 
           <div class="md-form">
+            <input mdbActive type="text" id="input_first_name" class="form-control" name="first_name" formControlName="first_name" autofocus>
+            <label for="input_first_name">{{ 'INPUTS.NAME' | translate }}</label>
+            <div *ngIf="formErrors.first_name.length > 0">
+              <div class="alert alert-danger" *ngFor="let error of formErrors.first_name">
+                {{ error | translate }}
+              </div>
+            </div>
+          </div>
+
+          <div class="md-form">
             <input mdbActive type="text" id="input_email" class="form-control" name="email" formControlName="email">
             <label  for="input_email">{{ 'INPUTS.USER_EMAIL' | translate }}</label>
             <div *ngIf="formErrors.email.length > 0">
