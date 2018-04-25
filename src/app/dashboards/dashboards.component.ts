@@ -37,21 +37,21 @@ export class DashboardsComponent implements OnInit {
     this.log.d('Component initialized');
 
     this.template = this.loadingTmpl;
-    this.userService.getUser(this.auth.currentUser).subscribe((user) => {
-      if (user) {
-        this.user = user;
+    this.userService.getUser(this.auth.currentUser).subscribe((result) => {
+      console.log(result);
+      if (result) {
         this.log.d('Loaded user', this.user);
-        console.log(this.user === 'admin');
-        if (this.user.role === 'admin') {
+        if (result.role.indexOf('admin') > -1) {
           console.log('admin');
           this.template = this.dashboardAdmin;
-        } else if (this.user.role === 'user') {
+        } else if (result.role.indexOf('user') > -1) {
           console.log('user');
           this.template = this.dashboardUser;
         } else {
           console.log('client');
           this.template = this.dashboardClient;
         }
+        this.user = result;
       }
     });
   }
