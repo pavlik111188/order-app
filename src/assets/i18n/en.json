@@ -39,6 +39,8 @@
     "RESERVATION": "Table reservation"
   },
   "INPUTS": {
+    "FIRST_NAME": "First name",
+    "LAST_NAME": "Last name",
     "ABOUT_YOU": "About you",
     "ACCOUNT_OWNER": "Account Owner",
     "BIC": "BIC",
@@ -64,7 +66,8 @@
     "WBESITE": "Website",
     "ZIP": "ZIP",
     "PASSWORD": "Password",
-    "DESCRIPTION": "Description"
+    "DESCRIPTION": "Description",
+    "BIRTHDAY": "Birthday"
   },
   "BUTTONS": {
     "LOGIN": "Sign in",
@@ -158,6 +161,13 @@
     "SIZE": "Size",
     "PROGRESS": "Progress",
     "DELETE": "Delete"
+  },
+  "PLACEHOLDER": {
+    "FIRST_NAME": "Your first name",
+    "LAST_NAME": "Your last name",
+    "EMAIL": "Your last email",
+    "PHONE": "Your phone",
+    "BIRTHDAY": "Your birthday"
   },
   "TEXTS": {
     "PASSWORT_RESET_MODAL":

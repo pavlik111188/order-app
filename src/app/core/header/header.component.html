@@ -36,7 +36,7 @@
         <li class="nav-item" mdbRippleRadius>
           <a class="nav-link waves-effect waves-light" routerLink="/dashboard" routerLinkActive="active" *ngIf="auth.loggedIn" mdbRippleRadius>
             <i class="fa fa-tachometer mr-1"></i>
-            Account ({{auth.currentUser.email}})
+            {{auth.currentUser.email}}
           </a>
         </li>
         <li class="nav-item" mdbRippleRadius>

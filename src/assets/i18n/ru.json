@@ -39,6 +39,8 @@
     "RESERVATION": "Забронировать"
   },
   "INPUTS": {
+    "FIRST_NAME": "Имя",
+    "LAST_NAME": "Фамилия",
     "ABOUT_YOU": "Про вас",
     "ACCOUNT_OWNER": "Account Owner",
     "BIC": "BIC",
@@ -47,7 +49,7 @@
     "CONFIRM_PASSWORD": "Подтвердить ваш пароль",
     "CONTACT_EMAIL": "Contact E-Mail",
     "DISPLAY_NAME": "Displayed name",
-    "EMAIL": "E-Mail",
+    "EMAIL": "Эл. почта",
     "FACEBOOK_PROFILE": "Facebook профиль",
     "IBAN": "IBAN",
     "INSTAGRAM_PROFILE": "Instagram профиль",
@@ -61,13 +63,13 @@
     "TWITTER_PROFILE": "Twitter профиль",
     "USER_EMAIL": "Ваш E-Mail",
     "USER_PASSWORD": "Ваш пароль",
-    "WBESITE": "Сайт",
+    "WEBSITE": "Сайт",
     "ZIP": "Индекс",
     "PASSWORD": "Пароль",
     "DESCRIPTION": "Описание",
     "LOCATION": "Местоположение",
-    "DATE": "Дата"
-
+    "DATE": "Дата",
+    "BIRTHDAY": "Дата рождения"
   },
   "BUTTONS": {
     "LOGIN": "Войти",
@@ -161,6 +163,13 @@
     "SIZE": "размер",
     "PROGRESS": "Прогресс",
     "DELETE": "Удалить"
+  },
+  "PLACEHOLDER": {
+    "FIRST_NAME": "Ваше имя",
+    "LAST_NAME": "Ваша фамилия",
+    "EMAIL": "Ваша эл. почта",
+    "PHONE": "Ваш телефон",
+    "BIRTHDAY": "Дата вашего рождения"
   },
   "TEXTS": {
     "PASSWORT_RESET_MODAL":

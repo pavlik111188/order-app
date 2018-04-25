@@ -7,12 +7,24 @@
   <div class="card-body">
     <form #accountForm="ngForm" (ngSubmit)="save(user)">
       <div class="md-form">
-        <input type="text" class="form-control" name="username" [(ngModel)]="user.username" placeholder="Username" required>
-        <label class="active">{{ 'INPUTS.NAME' | translate }}</label>
+        <input type="text" class="form-control" name="first_name" [(ngModel)]="user.first_name" placeholder="{{ 'PLACEHOLDER.FIRST_NAME' | translate }}">
+        <label class="active">{{ 'INPUTS.FIRST_NAME' | translate }}</label>
       </div>
       <div class="md-form">
-        <input class="form-control" type="email" name="email" [(ngModel)]="user.email" placeholder="Email" required>
+        <input type="text" class="form-control" name="last_name" [(ngModel)]="user.last_name" placeholder="{{ 'PLACEHOLDER.LAST_NAME' | translate }}">
+        <label class="active">{{ 'INPUTS.LAST_NAME' | translate }}</label>
+      </div>
+      <div class="md-form">
+        <input class="form-control" type="email" name="email" [(ngModel)]="user.email" placeholder="{{ 'PLACEHOLDER.EMAIL' | translate }}" required>
         <label class="active">{{ 'INPUTS.EMAIL' | translate }}</label>
+      </div>
+      <div class="md-form">
+        <input class="form-control" type="tel" name="phone" [(ngModel)]="user.phone" placeholder="{{ 'PLACEHOLDER.PHONE' | translate }}">
+        <label class="active">{{ 'INPUTS.PHONE' | translate }}</label>
+      </div>
+      <div class="md-form">
+        <input class="form-control" type="date" name="birthday" [(ngModel)]="user.birthday" placeholder="{{ 'PLACEHOLDER.BIRTHDAY' | translate }}">
+        <label class="active">{{ 'INPUTS.BIRTHDAY' | translate }}</label>
       </div>
       <br>
       <div class="row no-gutters justify-content-start" style="align-items: center">
