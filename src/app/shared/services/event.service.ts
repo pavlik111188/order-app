@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { Event } from '../models/event.model';
 
+const token = localStorage.getItem('token');
+const httpOptions = {
+  headers: new HttpHeaders({ 'token': token})
+};
+
 @Injectable()
 export class EventService {
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+    }
 
     getEvents(): Observable<Event[]> {
         return this.http.get<Event[]>('/api/events');
@@ -18,7 +24,8 @@ export class EventService {
     }
 
     addEvent(event: Event): Observable<Event> {
-        return this.http.post<Event>('/api/event', event);
+        // this.http.options(httpOptions);
+        return this.http.post<Event>('/api/event', event, httpOptions);
     }
 
     getEvent(event: Event): Observable<Event> {

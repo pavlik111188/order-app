@@ -37,6 +37,7 @@ abstract class BaseCtrl {
   // Insert middleware
   insertM = (req, res) => {
     const decoded = checkToken(req.headers.token);
+    console.log(req.body);
     if (decoded) {
       const roles = decoded['role'];
       if (roles.indexOf('client') > -1) {
