@@ -9,7 +9,7 @@
       <thead class="thead-light">
       <tr>
         <th scope="col">{{ 'INPUTS.TITLE' | translate }}</th>
-        <th scope="col">{{ 'INPUTS.TITLE' | translate }}</th>
+        <th scope="col">{{ 'INPUTS.DESCRIPTION' | translate }}</th>
         <th scope="col">{{ 'INPUTS.START_CAMPAIGN' | translate }}</th>
         <th scope="col">{{ 'INPUTS.END_CAMPAIGN' | translate }}</th>
       </tr>
@@ -26,7 +26,7 @@
         <td>{{event.date_start}}</td>
         <td>{{event.date_end}}</td>
         <td>
-          <button class="btn btn-sm btn-primary" (click)="enableEditing(event)"><i class="fa fa-pencil"></i> {{ 'BUTTONS.SUBMIT' | translate }}</button>
+          <button class="btn btn-sm btn-primary" (click)="enableEditing(event)"><i class="fa fa-pencil"></i> {{ 'BUTTONS.UPDATE' | translate }}</button>
           <button class="btn btn-sm btn-danger" (click)="deleteEvent(event)"><i class="fa fa-trash"></i> {{ 'BUTTONS.DELETE' | translate }}</button>
         </td>
       </tr>
@@ -39,7 +39,7 @@
             <input class="form-control mr-2" type="text" name="description" [(ngModel)]="event.description" placeholder="Description" min="0" required>
             <input class="form-control mr-2" type="date" name="date_start" [(ngModel)]="event.date_start" placeholder="Date start" required>
             <input class="form-control mr-2" type="date" name="date_end" [(ngModel)]="event.date_end" placeholder="Date end" required>
-            <button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid"><i class="fa fa-floppy-o"></i> {{ 'BUTTONS.SUBMIT' | translate }}</button>
+            <button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid"><i class="fa fa-floppy-o"></i> {{ 'BUTTONS.UPDATE' | translate }}</button>
             <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> {{ 'BUTTONS.CANCEL' | translate }}</button>
           </form>
         </td>

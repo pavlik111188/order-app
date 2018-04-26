@@ -2,7 +2,7 @@
  * Event class
  */
 export class Event {
-    _id?:string;
+    _id?: string;
     title?: string;
     description?: string;
     date_start?: string;

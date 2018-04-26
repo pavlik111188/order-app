@@ -48,7 +48,6 @@ export class DashboardClientComponent implements OnInit {
   addEvent() {
     this.eventService.addEvent(this.addEventForm.value).subscribe(
         res => {
-          console.log(res)
           this.events.push(res);
           this.addEventForm.reset();
           this.toast.setMessage('item added successfully.', 'success');
