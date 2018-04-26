@@ -24,17 +24,12 @@ export class DashboardAdminComponent implements OnInit {
 
   isLoading = true;
 
-  events: Event[] = [
-      new Event('pixbar', '11-12-2018', 'Senyavina str', '5'),
-      new Event('pixbar', '11-12-2018', 'Senyavina str', '5')
-  ];
+  events: Event[];
 
   /** User modal form */
   public userForm: FormGroup;
   /** Event modal form  */
   public eventForm: FormGroup;
-  /** Printing house modal form */
-  public printingHouseForm: FormGroup;
 
   /** Edit user modal */
   @ViewChild('editUserModal') public editUserModal;

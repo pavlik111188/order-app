@@ -1,3 +1,63 @@
-<p>
-  dashboard-client works!
-</p>
+<app-loading [condition]="isLoading"></app-loading>
+
+<app-toast [message]="toast.message"></app-toast>
+
+<div class="card mb-3" *ngIf="!isLoading">
+  <h4 class="card-header">Current event ({{events.length}})</h4>
+  <div class="card-body">
+    <table class="table table-bordered">
+      <thead class="thead-light">
+      <tr>
+        <th scope="col">{{ 'INPUTS.TITLE' | translate }}</th>
+        <th scope="col">{{ 'INPUTS.TITLE' | translate }}</th>
+        <th scope="col">{{ 'INPUTS.START_CAMPAIGN' | translate }}</th>
+        <th scope="col">{{ 'INPUTS.END_CAMPAIGN' | translate }}</th>
+      </tr>
+      </thead>
+      <tbody *ngIf="events.length === 0">
+      <tr>
+        <td colspan="4">There are no events in the DB. Add a new event below.</td>
+      </tr>
+      </tbody>
+      <tbody *ngIf="!isEditing">
+      <tr *ngFor="let event of events">
+        <td>{{event.title}}</td>
+        <td>{{event.description}}</td>
+        <td>{{event.date_start}}</td>
+        <td>{{event.date_end}}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="enableEditing(event)"><i class="fa fa-pencil"></i> {{ 'BUTTONS.SUBMIT' | translate }}</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteEvent(event)"><i class="fa fa-trash"></i> {{ 'BUTTONS.DELETE' | translate }}</button>
+        </td>
+      </tr>
+      </tbody>
+      <tbody *ngIf="isEditing">
+      <tr>
+        <td colspan="4">
+          <form class="form-inline" #form="ngForm" (ngSubmit)="editEvent(event)">
+            <input class="form-control mr-2" type="text" name="title" [(ngModel)]="event.title" placeholder="Title" required>
+            <input class="form-control mr-2" type="text" name="description" [(ngModel)]="event.description" placeholder="Description" min="0" required>
+            <input class="form-control mr-2" type="date" name="date_start" [(ngModel)]="event.date_start" placeholder="Date start" required>
+            <input class="form-control mr-2" type="date" name="date_end" [(ngModel)]="event.date_end" placeholder="Date end" required>
+            <button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid"><i class="fa fa-floppy-o"></i> {{ 'BUTTONS.SUBMIT' | translate }}</button>
+            <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> {{ 'BUTTONS.CANCEL' | translate }}</button>
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card" *ngIf="!isEditing">
+  <h4 class="card-header">Add new event</h4>
+  <div class="card-body">
+    <form class="form-inline" [formGroup]="addEventForm" (ngSubmit)="addEvent()">
+      <input class="form-control mr-2" type="text" name="title" formControlName="title" placeholder="Title">
+      <input class="form-control mr-2" type="text" name="description" formControlName="description" placeholder="Description">
+      <input class="form-control mr-2" type="date" name="date_start" formControlName="date_start" placeholder="Date start">
+      <input class="form-control mr-2" type="date" name="date_end" formControlName="date_end" placeholder="Date end">
+      <button class="btn btn-primary" type="submit" [disabled]="!addEventForm.valid"><i class="fa fa-floppy-o"></i> {{ 'BUTTONS.SUBMIT' | translate }}</button>
+    </form>
+  </div>
+</div>

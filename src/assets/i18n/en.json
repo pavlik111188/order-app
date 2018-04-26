@@ -59,14 +59,16 @@
     "PROFILE_URL": "Profile URL",
     "STREET_NUMBER": "Streetnumber",
     "STREET": "Street",
-    "TUMBLER_PROFILE": "Tumbler profile",
     "TWITTER_PROFILE": "Twitter profile",
     "USER_EMAIL": "Your E-Mail",
     "USER_PASSWORD": "Your password",
     "WBESITE": "Website",
     "ZIP": "ZIP",
     "PASSWORD": "Password",
+    "TITLE": "Title",
     "DESCRIPTION": "Description",
+    "START_CAMPAIGN": "Start campaign",
+    "END_CAMPAIGN": "End campaign",
     "BIRTHDAY": "Birthday"
   },
   "BUTTONS": {

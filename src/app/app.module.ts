@@ -15,6 +15,7 @@ import {DashboardsModule} from "./dashboards/dashboars.module";
 import {AuthService} from "./shared/services/auth.service";
 import {UserService} from "./shared/services/user.service";
 import { reducers } from './store/app.reducers';
+import {EventService} from "./shared/services/event.service";
 
 
 export function tokenGetter() {
@@ -58,7 +59,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [
     AuthService,
-    UserService
+    UserService,
+    EventService
   ],
   bootstrap: [AppComponent]
 })
