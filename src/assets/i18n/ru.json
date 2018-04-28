@@ -10,8 +10,8 @@
     "PICTURES": "Фотографии",
     "RATINGS": "Рейтинг",
     "ROLE": "Роль",
-    "SUBSCRIPTION": "Подписка",
-    "USER": "Пользователь"
+    "CURRENT_EVENTS": "Текущие события",
+    "USERS": "Пользователи"
   },
   "NAV": {
     "DASHBOARD": "Доска",
@@ -32,9 +32,7 @@
   "INPUTS": {
     "FIRST_NAME": "Имя",
     "LAST_NAME": "Фамилия",
-    "ABOUT_YOU": "Про вас",
-    "ACCOUNT_OWNER": "Account Owner",
-    "BIC": "BIC",
+    "ROLE": "Роль",
     "CITY": "Город",
     "COMPANY": "Компания",
     "CONFIRM_PASSWORD": "Подтвердить ваш пароль",
@@ -58,8 +56,8 @@
     "PASSWORD": "Пароль",
     "TITLE": "Заголовок",
     "DESCRIPTION": "Описание",
-    "START_CAMPAIGN": "Начало события",
-    "END_CAMPAIGN": "Окончание события",
+    "START_CAMPAIGN": "Начало",
+    "END_CAMPAIGN": "Окончание",
     "LOCATION": "Местоположение",
     "DATE": "Дата",
     "BIRTHDAY": "Дата рождения"
@@ -76,7 +74,7 @@
     "PROCEED_TO_CHECKOUT": "Proceed to checkout",
     "BACK": "Назад",
     "NEXT": "Вперед",
-    "SEND_ORDER": "Order now",
+    "ADD": "Добавить",
     "DELETE": "Удалить",
     "SINGUP_NOW": "Sign up now",
     "FIND_EVENT": "Find your event",
@@ -85,12 +83,9 @@
   },
   "LABELS": {
     "ADDRESS": "Address",
-    "ACCOUNT_DATA": "Account data",
-    "BILLING_ADDRESS": "Billing address",
-    "BILLING_INFORMATION": "Billing information",
     "COMMENT": "Your comment:",
     "CUSTOMER_RATING": "Customer rating",
-    "CREATE_NEW_EVENT": "Создать новый аккаунт",
+    "CREATE_NEW_EVENT": "Создать новое событие",
     "CREATE": "Создать",
     "CONTACT_DETAILS": "Contact-Details",
     "DELIVERY_ADDRESS": "Delivery Adress",
@@ -100,12 +95,7 @@
     "FORGOT_PASSWORD": "Забыли пароль?",
     "LOGIN": "Войти",
     "NO_MEMBER": "Not a member?",
-    "ORDER_DETAILS": "Order overview",
-    "PAYMENT_METHOD": "Payment method",
-    "PAYMENT_SHIPPING_DETAILS": "Payment and shipping method",
     "RATING": "Your rating:",
-    "PUBLIC_PROFILE": "Public profile",
-    "PRICES": "Prices",
     "RESET_PASSWORD": "Восстановление пароля",
     "SIGN_IN_WITH": "Или войти через:",
     "SIGN_UP_WITH": "Или зарегистрироваться через:",
@@ -126,11 +116,19 @@
     "NEXT": "Next",
     "PASSWORD": "Password",
     "EVENT_URL": "Event url",
-    "DOWNLOAD": "Download"
+    "ACTIONS": "Действия"
   },
-  "TABLE": {
+  "TABLES": {
     "NAME": "Имя",
-    "PROGRESS": "Прогресс",
+    "EMAIL": "Эл. почта",
+    "ROLE": "Роль",
+    "TITLE": "Заголовок",
+    "DESCRIPTION": "Описание",
+    "START_CAMPAIGN": "Начало",
+    "END_CAMPAIGN": "Конец",
+    "LOCATION": "Где?",
+    "ACTIONS": "Действия",
+    "EDIT": "Изменить",
     "DELETE": "Удалить"
   },
   "PLACEHOLDER": {
@@ -154,19 +152,18 @@
     "REQ_MINLENGTH_PASSWORD": "Пароль должен быть > 6 символов",
     "PROVIDE_VALID_CONFIRMPASSWORD": "Введите корректный пароль",
     "PROVIDE_VALID_URL": "Введите корректный URL",
-    "LANDING_BESTPICTURES": "Our best pictures",
     "PAGE_NOT_FOUND": "Well, that's not what we expected!",
     "PAGE_NOT_FOUND_DESCRIPTION": "Looks like someone left the lens cap on...",
     "SEARCH_RESTAURANT": "Search restaurant by ZIP",
-    "PRICING_ADDITIONAL": "Become a premium member",
     "NO_RESTAURANTS_FOUND": "There are no restaurants in your area",
     "NO_EVENTS_FOUND": "No Events found",
-    "DESCRIBE_REPORT": "Describe why you want to report this image",
     "SEARCH_BY_NAME": "Search by name",
     "SEARCH_BY_ID": "Search by id",
     "SEARCH_EVENT_BY_NAME": "Search event by name",
     "SEARCH_EVENT_BY_ID": "Search event by id",
-    "VISIT_RESTAURANTS_PAGE": "Visit restaurants page"
+    "VISIT_RESTAURANTS_PAGE": "Visit restaurants page",
+    "NO_REGISTERED_USERS": "Нет зарегистрированных пользователей",
+    "NO_ACTIVE_EVENTS": "Нет активных событий"
   },
   "TABS": {
     "EVENT_SETTINGS": "Event Settings",

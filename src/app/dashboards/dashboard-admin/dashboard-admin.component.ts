@@ -9,6 +9,7 @@ import { User } from '../../shared/models/user.model';
 import {UserService} from "../../shared/services/user.service";
 import {AuthService} from "../../shared/services/auth.service";
 import {ToastComponent} from "../../shared/toats/toast.component";
+import {EventService} from "../../shared/services/event.service";
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -22,9 +23,10 @@ export class DashboardAdminComponent implements OnInit {
   /** Users */
   users: User[] = [];
 
-  isLoading = true;
+  /** Events */
+  events: Event[] = [];
 
-  events: Event[];
+  isLoading = true;
 
   /** User modal form */
   public userForm: FormGroup;
@@ -37,6 +39,7 @@ export class DashboardAdminComponent implements OnInit {
   @ViewChild('editEventModal') public editEventModal;
 
   constructor(public auth: AuthService,
+              private eventService: EventService,
               public toast: ToastComponent,
               private userService: UserService,
               private formBuilder: FormBuilder,
@@ -77,11 +80,20 @@ export class DashboardAdminComponent implements OnInit {
     this.log.d('Component initialized');
 
     this.getUsers();
+    this.getEvents();
   }
 
   getUsers() {
     this.userService.getUsers().subscribe(
         data => this.users = data,
+        error => console.log(error),
+        () => this.isLoading = false
+    );
+  }
+
+  getEvents() {
+    this.eventService.getEvents().subscribe(
+        data => this.events = data,
         error => console.log(error),
         () => this.isLoading = false
     );

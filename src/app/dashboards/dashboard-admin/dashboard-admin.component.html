@@ -2,107 +2,89 @@
 
 <app-toast [message]="toast.message"></app-toast>
 
-<mdb-tabset [buttonClass]="'nav-tabs indigo'" [contentClass]="'card'" *ngIf="!isLoading">
-  <mdb-tab heading="{{ 'TABS.REVENUE' | translate }}">
-    <div class="row">
-      <div class="col-12">
-        <br>
-      </div>
-    </div>
-  </mdb-tab>
-  <mdb-tab heading="{{ 'TABS.EVENTS' | translate }}">
-    <div class="row">
-      <div class="col-12">
-        <br>
-        <div class="table-responsive text-left">
-          <table class="table">
-            <thead class="thead-default">
-            <tr>
-              <th>#</th>
-              <th>{{ 'DASHBOARD.NAME' | translate }}</th>
-              <th>{{ 'DASHBOARD.DATE' | translate }}</th>
-              <th>{{ 'DASHBOARD.LOCATION' | translate }}</th>
-              <th>{{ 'DASHBOARD.RATINGS' | translate }}</th>
-              <th>{{ 'DASHBOARD.EDIT' | translate }}</th>
-              <th>{{ 'TABLE.DELETE' | translate }}</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let event of events; let i = index" [class.table-danger]="event.deleted">
-              <td>{{ i + 1}}</td>
-              <td>{{ event.name }}</td>
-              <td>{{ event.date }}</td>
-              <td>{{ event.location }}</td>
-              <td>{{ event.ratings }}</td>
-              <td>
-                <a (click)="editEvent(event)">
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
-                </a>
-              </td>
-              <td>
-                <a (click)="deleteEvent(event)">
-                  <i class="fa fa-trash" aria-hidden="true"></i>
-                </a>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </mdb-tab>
-  <mdb-tab heading="{{ 'TABS.USER' | translate }} ({{users.length}})">
-    <div class="row">
-      <div class="col-12">
-        <br>
-        <div class="table-responsive text-left">
-          <table class="table">
-            <thead class="thead-default">
-            <tr>
-              <th>#</th>
-              <th>{{ 'DASHBOARD.NAME' | translate }}</th>
-              <th>{{ 'DASHBOARD.EMAIL' | translate }}</th>
-              <th>{{ 'DASHBOARD.ROLE' | translate }}</th>
-              <th>{{ 'DASHBOARD.EDIT' | translate }}</th>
-              <th>{{ 'TABLE.DELETE' | translate }}</th>
-            </tr>
-            </thead>
-            <tbody *ngIf="users.length === 0">
-            <tr>
-              <td colspan="4">There are no registered users.</td>
-            </tr>
-            </tbody>
-            <tbody>
-            <tr *ngFor="let user of users; let i = index">
-              <th scope="row">{{ i + 1 }}</th>
-              <td>{{ user.first_name }}</td>
-              <td>{{ user.email }}</td>
-              <td>{{user.role}}</td>
-              <td>
-                <a (click)="editUser(user)">
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
-                </a>
-              </td>
-              <td>
-                <a (click)="deleteUser(user)" [disabled]="auth.currentUser._id === user._id">
-                  <i class="fa fa-trash" aria-hidden="true"></i>
-                </a>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </mdb-tab>
-  <mdb-tab heading="PRINTING_HOUSES">
-    <div class="row">
-      <div class="col-12 text-left">
+<div class="card mb-3" *ngIf="!isLoading">
+  <h4 class="card-header">{{ 'DASHBOARD.CURRENT_EVENTS' | translate }} ({{events.length}})</h4>
+  <div class="card-body">
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>#</th>
+          <th>{{ 'TABLES.TITLE' | translate }}</th>
+          <th>{{ 'TABLES.DESCRIPTION' | translate }}</th>
+          <th>{{ 'TABLES.START_CAMPAIGN' | translate }}/{{ 'TABLES.END_CAMPAIGN' | translate }}</th>
+          <th>{{ 'TABLES.LOCATION' | translate }}</th>
+          <th>{{ 'TABLES.EDIT' | translate }}</th>
+          <th>{{ 'TABLES.DELETE' | translate }}</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="events.length === 0">
+        <tr>
+          <td colspan="4">{{ 'TEXTS.NO_REGISTERED_USERS' | translate }}</td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr *ngFor="let event of events; let i = index" [class.table-danger]="event.deleted">
+          <td>{{ i + 1}}</td>
+          <td>{{ event.title }}</td>
+          <td>{{ event.description }}</td>
+          <td>{{ event.date_start }} / {{ event.date_start }}</td>
+          <td>{{ event.place_id }}</td>
+          <td>
+            <a (click)="editEvent(event)">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </a>
+          </td>
+          <td>
+            <a (click)="deleteEvent(event)">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-      </div>
-    </div>
-  </mdb-tab>
-</mdb-tabset>
+<div class="card mb-3">
+  <h4 class="card-header">{{ 'DASHBOARD.USERS' | translate }} ({{users.length}})</h4>
+  <div class="card-body">
+    <table class="table table-bordered">
+      <thead class="thead-light">
+      <tr>
+        <th>#</th>
+        <th>{{ 'TABLES.NAME' | translate }}</th>
+        <th>{{ 'TABLES.EMAIL' | translate }}</th>
+        <th>{{ 'TABLES.ROLE' | translate }}</th>
+        <th>{{ 'TABLES.EDIT' | translate }}</th>
+        <th>{{ 'TABLES.DELETE' | translate }}</th>
+      </tr>
+      </thead>
+      <tbody *ngIf="users.length === 0">
+      <tr>
+        <td colspan="4">{{ 'TEXTS.NO_REGISTERED_USERS' | translate }}</td>
+      </tr>
+      </tbody>
+      <tbody>
+      <tr *ngFor="let user of users; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ user.last_name }} {{ user.first_name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <a (click)="editUser(user)">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </a>
+        </td>
+        <td>
+          <a (click)="deleteUser(user)" [disabled]="auth.currentUser._id === user._id">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 
 <!--Modal: Edit user form-->
@@ -121,10 +103,28 @@
 
       <div class="modal-body mb-0">
         <form [formGroup]="userForm" (ngSubmit)="updateUser()">
+          <div class="md-form">
+            <input type="text" class="form-control" name="first_name" formControlName="first_name">
+            <label class="active">{{ 'INPUTS.FIRST_NAME' | translate }}</label>
+          </div>
 
+          <div class="md-form">
+            <input type="text" class="form-control" name="last_name" formControlName="last_name">
+            <label class="active">{{ 'INPUTS.LAST_NAME' | translate }}</label>
+          </div>
+
+          <div class="md-form">
+            <input type="email" class="form-control" name="email" formControlName="email">
+            <label class="active">{{ 'INPUTS.EMAIL' | translate }}</label>
+          </div>
+
+          <div class="md-form">
+            <input type="text" class="form-control" name="role" formControlName="role">
+            <label class="active">{{ 'INPUTS.ROLE' | translate }}</label>
+          </div>
           <br>
           <button type="submit" class="btn indigo btn-lg btn-block waves-light" mdbRippleRadius>
-            <i class="fa fa-refresh mr-1"></i>{{ 'BUTTONS.UPDATE_USER' | translate }}</button>
+            <i class="fa fa-refresh mr-1"></i>{{ 'BUTTONS.UPDATE' | translate }}</button>
         </form>
       </div>
     </div>
@@ -147,36 +147,31 @@
       </div>
 
       <div class="modal-body mb-0">
-        <form [formGroup]="eventForm">
+        <form [formGroup]="eventForm" (ngSubmit)="editEvent(event)">
 
           <div class="md-form">
-            <input type="text" class="form-control" formControlName="name">
-            <label class="active">{{ 'INPUTS.NAME' | translate }}</label>
+            <input type="text" class="form-control" name="title" formControlName="title">
+            <label class="active">{{ 'INPUTS.TITLE' | translate }}</label>
           </div>
 
           <div class="md-form">
-            <input type="text" class="form-control" formControlName="description">
+            <input type="text" class="form-control" name="description" formControlName="description">
             <label class="active">{{ 'INPUTS.DESCRIPTION' | translate }}</label>
           </div>
 
           <div class="md-form">
-            <input type="text" class="form-control" formControlName="location">
-            <label class="active">{{ 'INPUTS.LOCATION' | translate }}</label>
+            <input type="date" class="form-control" name="date_start" formControlName="date_start">
+            <label class="active">{{ 'INPUTS.START_CAMPAIGN' | translate }}</label>
           </div>
 
           <div class="md-form">
-            <input type="text" class="form-control" formControlName="date">
-            <label class="active">{{ 'INPUTS.DATE' | translate }}</label>
-          </div>
-
-          <div class="md-form">
-            <input type="password" class="form-control" formControlName="password">
-            <label class="active">{{ 'INPUTS.PASSWORD' | translate }}</label>
+            <input type="date" class="form-control" name="date_end" formControlName="date_end">
+            <label class="active">{{ 'INPUTS.END_CAMPAIGN' | translate }}</label>
           </div>
 
         </form>
         <button type="button" class="btn indigo btn-lg btn-block waves-light" (click)="updateEvent()" mdbRippleRadius>
-          <i class="fa fa-refresh mr-1"></i>{{ 'BUTTONS.UPDATE_EVENT' | translate }}</button>
+          <i class="fa fa-refresh mr-1"></i>{{ 'BUTTONS.UPDATE' | translate }}</button>
       </div>
     </div>
   </div>

@@ -18,6 +18,7 @@ export class DashboardClientComponent implements OnInit {
   isEditing = false;
 
   addEventForm: FormGroup;
+  editEventForm: FormGroup;
   title = new FormControl('', Validators.required);
   description = new FormControl('', Validators.required);
   date_start = new FormControl('', Validators.required);
@@ -30,6 +31,12 @@ export class DashboardClientComponent implements OnInit {
   ngOnInit() {
     this.getEvents();
     this.addEventForm = this.formBuilder.group({
+      title: this.title,
+      description: this.description,
+      date_start: this.date_start,
+      date_end: this.date_end
+    });
+    this.editEventForm = this.formBuilder.group({
       title: this.title,
       description: this.description,
       date_start: this.date_start,

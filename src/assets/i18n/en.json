@@ -10,8 +10,8 @@
     "PICTURES": "Pictures",
     "RATINGS": "Ratings",
     "ROLE": "Role",
-    "SUBSCRIPTION": "Subscription",
-    "USER": "User"
+    "CURRENT_EVENTS": "Current events",
+    "USERS": "Users"
   },
   "NAV": {
     "DASHBOARD": "Dashboard",
@@ -33,9 +33,7 @@
   "INPUTS": {
     "FIRST_NAME": "First name",
     "LAST_NAME": "Last name",
-    "ABOUT_YOU": "About you",
-    "ACCOUNT_OWNER": "Account Owner",
-    "BIC": "BIC",
+    "ROLE": "Role",
     "CITY": "City",
     "COMPANY": "Company",
     "CONFIRM_PASSWORD": "Confirm your password",
@@ -75,7 +73,7 @@
     "PROCEED_TO_CHECKOUT": "Proceed to checkout",
     "BACK": "Back",
     "NEXT": "Next",
-    "SEND_ORDER": "Order now",
+    "ADD": "Add",
     "DELETE": "Delete",
     "SINGUP_NOW": "Sign up now",
     "FIND_EVENT": "Find your event",
@@ -85,9 +83,6 @@
   },
   "LABELS": {
     "ADDRESS": "Address",
-    "ACCOUNT_DATA": "Account data",
-    "BILLING_ADDRESS": "Billing address",
-    "BILLING_INFORMATION": "Billing information",
     "COMMENT": "Your comment:",
     "CUSTOMER_RATING": "Customer rating",
     "CREATE_NEW_EVENT": "Create new event",
@@ -100,12 +95,7 @@
     "FORGOT_PASSWORD": "Forgot password?",
     "LOGIN": "Sign in",
     "NO_MEMBER": "Not a member?",
-    "ORDER_DETAILS": "Order overview",
-    "PAYMENT_METHOD": "Payment method",
-    "PAYMENT_SHIPPING_DETAILS": "Payment and shipping method",
     "RATING": "Your rating:",
-    "PUBLIC_PROFILE": "Public profile",
-    "PRICES": "Prices",
     "RESET_PASSWORD": "Reset password",
     "SIGN_IN_WITH": "Or sign in with:",
     "SIGN_UP_WITH": "Or sign up with:",
@@ -128,11 +118,19 @@
     "GTC": "Terms and conditions",
     "EVENT_URL": "Event url",
     "PRINT": "Print",
-    "DOWNLOAD": "Download"
+    "ACTIONS": "Actions"
   },
-  "TABLE": {
+  "TABLES": {
     "NAME": "Name",
-    "PROGRESS": "Progress",
+    "EMAIL": "Email",
+    "ROLE": "Role",
+    "TITLE": "Title",
+    "DESCRIPTION": "Description",
+    "START_CAMPAIGN": "Start",
+    "END_CAMPAIGN": "End",
+    "LOCATION": "Where?",
+    "ACTIONS": "Actions",
+    "EDIT": "Edit",
     "DELETE": "Delete"
   },
   "PLACEHOLDER": {
@@ -156,27 +154,21 @@
     "PROVIDE_VALID_CONFIRMPASSWORD": "Please provide a valid password",
     "PROVIDE_MATCH_PASSWORD": "Password confirm not match",
     "PROVIDE_VALID_URL": "Please provide a valid URL",
-    "LANDING_BESTPICTURES": "Our best pictures",
     "PAGE_NOT_FOUND": "Well, that's not what we expected!",
     "PAGE_NOT_FOUND_DESCRIPTION": "Looks like someone left the lens cap on...",
     "SEARCH_RESTAURANT": "Search restaurant by ZIP",
-    "EVENT_ALL_PICTURES": "All pictures",
-    "EVENT_SELECTED_PICTURES": "Selected pictures",
-    "SEARCH_PICTURES": "Search for pictures by name",
-    "PRICING_ADDITIONAL": "Become a premium member",
-    "PRICING_LIST_POSITION":
-      "With upgrading to a premium account the restaurant will always be listed on the first position of nearby restaurants.",
     "PRICING_MORE_ATTENTION": "Receive more attention from customers",
     "PRICING_FIRST_POSITION": "Be always on the first position",
     "NO_RESTAURANTS_FOUND": "There are no restaurants in your area",
     "NO_EVENTS_FOUND": "No Events found",
-    "DESCRIBE_REPORT": "Describe why you want to report this image",
     "SEARCH_BY_NAME": "Search by name",
     "SEARCH_BY_ID": "Search by id",
     "SEARCH_EVENT_BY_NAME": "Search event by name",
     "SEARCH_EVENT_BY_ID": "Search event by id",
     "PAYMENT_SUCCESSFULL": "Payment successfull!",
-    "VISIT_RESTAURANTS_PAGE": "Visit restaurants page"
+    "VISIT_RESTAURANTS_PAGE": "Visit restaurants page",
+    "NO_REGISTERED_USERS": "There are no registered users",
+    "NO_ACTIVE_EVENTS": "There are no active events"
   },
   "TABS": {
     "EDIT_IMAGES": "Edit Images",
