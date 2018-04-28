@@ -93,7 +93,7 @@
 
     <div class="modal-content">
 
-      <div class="modal-header indigo white-text">
+      <div class="modal-header info-color-dark white-text">
         <h4 class="title">
           <i class="fa fa-pencil"></i> {{ 'LABELS.EDIT_USER' | translate }}</h4>
         <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="editUserModal.hide()">
@@ -123,7 +123,7 @@
             <label class="active">{{ 'INPUTS.ROLE' | translate }}</label>
           </div>
           <br>
-          <button type="submit" class="btn indigo btn-lg btn-block waves-light" mdbRippleRadius>
+          <button type="submit" class="btn info-color-dark btn-lg btn-block waves-light" mdbRippleRadius>
             <i class="fa fa-refresh mr-1"></i>{{ 'BUTTONS.UPDATE' | translate }}</button>
         </form>
       </div>
@@ -138,9 +138,9 @@
 
     <div class="modal-content">
 
-      <div class="modal-header indigo white-text">
+      <div class="modal-header warning-color-dark white-text">
         <h4 class="title">
-          <i class="fa fa-pencil"></i> {{ 'LABELS.EDIT_EVENT' | translate }}</h4>
+          <i class="fa fa-pencil"></i> {{ 'LABELS.UPDATE_EVENT' | translate }}</h4>
         <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="editEventModal.hide()">
           <span class="white-text" aria-hidden="true">×</span>
         </button>
@@ -170,7 +170,7 @@
           </div>
 
         </form>
-        <button type="button" class="btn indigo btn-lg btn-block waves-light" (click)="updateEvent()" mdbRippleRadius>
+        <button type="button" class="btn warning-color-dark btn-lg btn-block waves-light" (click)="updateEvent()" mdbRippleRadius>
           <i class="fa fa-refresh mr-1"></i>{{ 'BUTTONS.UPDATE' | translate }}</button>
       </div>
     </div>

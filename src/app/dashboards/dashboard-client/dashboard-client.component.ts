@@ -63,19 +63,6 @@ export class DashboardClientComponent implements OnInit {
     );
   }
 
-  enableEditing(event: Event) {
-    this.isEditing = true;
-    this.event = event;
-  }
-
-  cancelEditing() {
-    this.isEditing = false;
-    this.event = new Event();
-    this.toast.setMessage('item editing cancelled.', 'warning');
-    // reload the cats to reset the editing
-    this.getEvents();
-  }
-
   editEvent(event: Event) {
     this.eventService.editEvent(event).subscribe(
         () => {

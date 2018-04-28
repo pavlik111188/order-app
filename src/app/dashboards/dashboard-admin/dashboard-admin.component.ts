@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 
 import { Log } from 'ng2-logger';
@@ -33,6 +33,15 @@ export class DashboardAdminComponent implements OnInit {
   /** Event modal form  */
   public eventForm: FormGroup;
 
+  first_name = new FormControl('', Validators.required);
+  last_name = new FormControl('', Validators.required);
+  email = new FormControl('', Validators.email);
+  role = new FormControl('', Validators.email);
+  title = new FormControl('', Validators.required);
+  description = new FormControl('', Validators.required);
+  date_start = new FormControl('', Validators.required);
+  date_end = new FormControl('', Validators.required);
+
   /** Edit user modal */
   @ViewChild('editUserModal') public editUserModal;
   /** Edit event modal */
@@ -46,33 +55,6 @@ export class DashboardAdminComponent implements OnInit {
               translate: TranslateService) {
     translate.setDefaultLang('en');
     translate.use(translate.getBrowserLang());
-
-    this.userForm = this.formBuilder.group({
-      city: ['', Validators.required],
-      email: ['', Validators.email],
-      eventCounter: ['', Validators.required],
-      eventsLeft: ['', Validators.required],
-      isValidated: ['', Validators.required],
-      lastname: ['', Validators.required],
-      name: ['', Validators.required],
-      phone: ['', Validators.required],
-      role: ['', Validators.required],
-      street: ['', Validators.required],
-      subscription: ['', Validators.required],
-      uid: ['', Validators.required],
-      zip: ['', Validators.required]
-    });
-    this.eventForm = this.formBuilder.group({
-      date: ['', Validators.required],
-      description: ['', Validators.required],
-      id: ['', Validators.required],
-      location: ['', Validators.required],
-      name: ['', Validators.required],
-      password: ['', Validators.required],
-      photographerUid: ['', Validators.required],
-      public: [false, Validators.required],
-      ratings: [0, Validators.required]
-    });
   }
 
   ngOnInit() {
@@ -80,7 +62,19 @@ export class DashboardAdminComponent implements OnInit {
     this.log.d('Component initialized');
 
     this.getUsers();
+    this.userForm = this.formBuilder.group({
+      first_name: this.first_name,
+      last_name: this.last_name,
+      email: this.email,
+      role: this.role
+    });
     this.getEvents();
+    this.eventForm = this.formBuilder.group({
+      title: this.title,
+      description: this.description,
+      date_start: this.date_start,
+      date_end: this.date_end
+    });
   }
 
   getUsers() {
