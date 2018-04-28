@@ -5,7 +5,7 @@ const placeSchema = new mongoose.Schema({
   description: String,
   owner: {type: String, required: true },
   logo: String,
-  location: [{ country: String, city: String, zip: String, street: String, coordinates: String}]
+  location: [{ country: String, city: String, zip: String, address: String, coordinates: String}]
 });
 
 const Place = mongoose.model('Place', placeSchema);
