@@ -17,12 +17,7 @@ export class DashboardClientComponent implements OnInit {
   isLoading = true;
   isEditing = false;
 
-  addEventForm: FormGroup;
-  editEventForm: FormGroup;
-  title = new FormControl('', Validators.required);
-  description = new FormControl('', Validators.required);
-  date_start = new FormControl('', Validators.required);
-  date_end = new FormControl('', Validators.required);
+  eventForm: FormGroup;
 
   constructor(private eventService: EventService,
               private formBuilder: FormBuilder,
@@ -30,19 +25,80 @@ export class DashboardClientComponent implements OnInit {
 
   ngOnInit() {
     this.getEvents();
-    this.addEventForm = this.formBuilder.group({
-      title: this.title,
-      description: this.description,
-      date_start: this.date_start,
-      date_end: this.date_end
-    });
-    this.editEventForm = this.formBuilder.group({
-      title: this.title,
-      description: this.description,
-      date_start: this.date_start,
-      date_end: this.date_end
-    });
+    // Init forms
+    this.buildEventForm();
   }
+
+  //edit event builder
+  buildEventForm(): void {
+    this.eventForm = this.formBuilder.group({
+        'title' : [null, [
+            Validators.required,
+            Validators.minLength(6)
+        ]
+        ],
+        'description' : [null, [
+            Validators.required,
+            Validators.minLength(6)
+        ]
+        ],
+        'date_start' : [null, [
+            Validators.required
+        ]
+        ],
+        'date_end' : [null, [
+            Validators.required
+        ]
+        ]
+    });
+
+    this.eventForm.valueChanges
+        .subscribe(data => this.onValueChanged(data));
+
+    this.onValueChanged(); // (re)set validation messages now
+  }
+
+  onValueChanged(data?: any) {
+    if (!this.eventForm) { return; }
+    const form = this.eventForm;
+
+    for (const field in this.formErrors) {
+        // clear previous error message (if any)
+        this.formErrors[field] = [];
+        const control = form.get(field);
+
+        if (control && control.dirty && !control.valid) {
+            const messages = this.validationMessages[field];
+            for (const key in control.errors) {
+                this.formErrors[field].push(messages[key]);
+            }
+        }
+    }
+  }
+
+  formErrors = {
+    'title': [],
+    'description': [],
+    'date_start': [],
+    'date_end': []
+  };
+
+  validationMessages = {
+    'title': {
+        'required': 'TEXTS.REQ_TITLE',
+        'minlength': 'TEXTS.REQ_MINLENGTH_TITLE'
+    },
+    'description': {
+        'required': 'TEXTS.REQ_DESCRIPTION',
+        'minlength': 'TEXTS.REQ_MINLENGTH_DESCRIPTION'
+    },
+    'date_start': {
+      'required': 'TEXTS.REQ_START_CAMPAIGN'
+    },
+    'date_end': {
+      'required': 'TEXTS.REQ_END_CAMPAIGN'
+    },
+  };
 
   getEvents() {
     this.eventService.getEvents().subscribe(
@@ -53,10 +109,10 @@ export class DashboardClientComponent implements OnInit {
   }
 
   addEvent() {
-    this.eventService.addEvent(this.addEventForm.value).subscribe(
+    this.eventService.addEvent(this.eventForm.value).subscribe(
         res => {
           this.events.push(res);
-          this.addEventForm.reset();
+          this.eventForm.reset();
           this.toast.setMessage('item added successfully.', 'success');
         },
         error => console.log(error)

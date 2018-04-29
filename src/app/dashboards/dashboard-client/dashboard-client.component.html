@@ -57,34 +57,54 @@
       </div>
 
       <div class="modal-body mb-0">
-        <form [formGroup]="editEventForm">
+        <form [formGroup]="eventForm" (ngSubmit)="editEvent(event)">
 
           <div class="md-form">
-            <input type="text" class="form-control" name="title" formControlName="title">
+            <input mdbActive type="text" class="form-control" name="title" formControlName="title" autofocus>
             <label class="active">{{ 'INPUTS.TITLE' | translate }}</label>
+            <div *ngIf="formErrors.title.length > 0">
+              <div class="alert alert-danger" *ngFor="let error of formErrors.title">
+                {{ error | translate }}
+              </div>
+            </div>
           </div>
 
           <div class="md-form">
-            <input type="text" class="form-control" name="description" formControlName="description">
+            <input mdbActive type="text" class="form-control" name="description" formControlName="description">
             <label class="active">{{ 'INPUTS.DESCRIPTION' | translate }}</label>
+            <div *ngIf="formErrors.description.length > 0">
+              <div class="alert alert-danger" *ngFor="let error of formErrors.description">
+                {{ error | translate }}
+              </div>
+            </div>
           </div>
 
           <div class="md-form">
-            <input type="date" class="form-control" name="date_start" formControlName="date_start">
+            <input mdbActive type="date" class="form-control" name="date_start" formControlName="date_start">
             <label class="active">{{ 'INPUTS.START_CAMPAIGN' | translate }}</label>
+            <div *ngIf="formErrors.date_start.length > 0">
+              <div class="alert alert-danger" *ngFor="let error of formErrors.date_start">
+                {{ error | translate }}
+              </div>
+            </div>
           </div>
 
           <div class="md-form">
-            <input type="date" class="form-control" name="date_end" formControlName="date_end">
+            <input mdbActive type="date" class="form-control" name="date_end" formControlName="date_end">
             <label class="active">{{ 'INPUTS.END_CAMPAIGN' | translate }}</label>
+            <div *ngIf="formErrors.date_end.length > 0">
+              <div class="alert alert-danger" *ngFor="let error of formErrors.date_end">
+                {{ error | translate }}
+              </div>
+            </div>
           </div>
+          <button type="button" class="btn danger-color-dark btn-lg btn-block waves-light" (click)="editEventModal.hide()">
+            <i class="fa fa-times"></i> {{ 'BUTTONS.CANCEL' | translate }}
+          </button>
+          <button type="submit" class="btn warning-color-dark btn-lg btn-block waves-light" [disabled]="!eventForm.valid" mdbRippleRadius>
+            <i class="fa fa-pencil"></i> {{ 'BUTTONS.UPDATE' | translate }}
+          </button>
         </form>
-        <button type="button" class="btn danger-color-dark btn-lg btn-block waves-light" (click)="editEventModal.hide()">
-          <i class="fa fa-times"></i> {{ 'BUTTONS.CANCEL' | translate }}
-        </button>
-        <button type="button" class="btn warning-color-dark btn-lg btn-block waves-light" (click)="editEvent(event)" mdbRippleRadius>
-          <i class="fa fa-pencil"></i> {{ 'BUTTONS.UPDATE' | translate }}
-        </button>
       </div>
     </div>
   </div>
@@ -107,35 +127,54 @@
       </div>
 
       <div class="modal-body mb-0">
-        <form [formGroup]="addEventForm">
+        <form [formGroup]="eventForm" (ngsubmit)="addEvent()">
 
           <div class="md-form">
-            <input type="text" class="form-control" name="title" formControlName="title">
+            <input mdbActive type="text" class="form-control" name="title" formControlName="title" autofocus>
             <label class="active">{{ 'INPUTS.TITLE' | translate }}</label>
+            <div *ngIf="formErrors.title.length > 0">
+              <div class="alert alert-danger" *ngFor="let error of formErrors.title">
+                {{ error | translate }}
+              </div>
+            </div>
           </div>
 
           <div class="md-form">
-            <input type="text" class="form-control" name="description" formControlName="description">
+            <input mdbActive type="text" class="form-control" name="description" formControlName="description">
             <label class="active">{{ 'INPUTS.DESCRIPTION' | translate }}</label>
+            <div *ngIf="formErrors.description.length > 0">
+              <div class="alert alert-danger" *ngFor="let error of formErrors.description">
+                {{ error | translate }}
+              </div>
+            </div>
           </div>
 
           <div class="md-form">
-            <input type="date" class="form-control" name="date_start" formControlName="date_start">
+            <input mdbActive type="date" class="form-control" name="date_start" formControlName="date_start">
             <label class="active">{{ 'INPUTS.START_CAMPAIGN' | translate }}</label>
+            <div *ngIf="formErrors.date_start.length > 0">
+              <div class="alert alert-danger" *ngFor="let error of formErrors.date_start">
+                {{ error | translate }}
+              </div>
+            </div>
           </div>
 
           <div class="md-form">
-            <input type="date" class="form-control" name="date_end" formControlName="date_end">
+            <input mdbActive type="date" class="form-control" name="date_end" formControlName="date_end">
             <label class="active">{{ 'INPUTS.END_CAMPAIGN' | translate }}</label>
+            <div *ngIf="formErrors.date_end.length > 0">
+              <div class="alert alert-danger" *ngFor="let error of formErrors.date_end">
+                {{ error | translate }}
+              </div>
+            </div>
           </div>
-
+          <button type="button" class="btn danger-color-dark btn-lg btn-block waves-light" (click)="addEventModal.hide()">
+            <i class="fa fa-times"></i> {{ 'BUTTONS.CANCEL' | translate }}
+          </button>
+          <button type="submit" class="btn info-color-dark btn-lg btn-block waves-light" [disabled]="!eventForm.valid" mdbRippleRadius>
+            {{ 'BUTTONS.ADD' | translate }}
+          </button>
         </form>
-        <button type="button" class="btn danger-color-dark btn-lg btn-block waves-light" (click)="addEventModal.hide()">
-          <i class="fa fa-times"></i> {{ 'BUTTONS.CANCEL' | translate }}
-        </button>
-        <button type="button" class="btn info-color-dark btn-lg btn-block waves-light" (click)="addEvent()" mdbRippleRadius>
-          {{ 'BUTTONS.ADD' | translate }}
-        </button>
       </div>
     </div>
   </div>
