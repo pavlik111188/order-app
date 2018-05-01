@@ -36,7 +36,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     AppRoutingModule,
-    SharedModule,
     MDBBootstrapModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
@@ -45,6 +44,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    SharedModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -54,7 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AuthModule,
     CoreModule,
     DashboardsModule,
-    StoreModule.forRoot(reducers)
+    StoreModule.forRoot(reducers),
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [

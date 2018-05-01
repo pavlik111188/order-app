@@ -1,7 +1,9 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule, ModuleWithProviders} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import {TranslateModule} from "@ngx-translate/core";
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import {LoadingComponent} from "./loading/loading.component";
 import {ToastComponent} from "./toats/toast.component";
@@ -11,7 +13,9 @@ import {ToastComponent} from "./toats/toast.component";
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        HttpClientModule
+        HttpClientModule,
+        TranslateModule,
+        MDBBootstrapModule
     ],
     exports: [
         // Shared Modules
@@ -19,6 +23,8 @@ import {ToastComponent} from "./toats/toast.component";
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        TranslateModule,
+        MDBBootstrapModule,
         // Shared Components
         ToastComponent,
         LoadingComponent
@@ -31,4 +37,10 @@ import {ToastComponent} from "./toats/toast.component";
         ToastComponent
     ]
 })
-export class SharedModule { }
+export class SharedModule {
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: SharedModule
+        };
+    }
+}
