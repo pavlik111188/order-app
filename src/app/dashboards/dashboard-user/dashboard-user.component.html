@@ -39,3 +39,41 @@
     </form>
   </div>
 </div>
+
+<section class="team-section text-center pb-3" *ngIf="!isLoading && events.length > 0">
+
+  <!--Section heading-->
+  <h1 class="h1 pt-4">Events</h1>
+  <!--Section description-->
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi,
+    veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam.</p>
+
+  <!--Grid row-->
+  <div class="row text-center">
+
+    <!--Grid column-->
+    <div class="col-md-4" *ngFor="let event of events">
+
+      <div class="testimonial">
+
+        <!--Content-->
+        <h4 class="my-3">{{event.title}}</h4>
+        <h6 class="mb-3 font-bold grey-text">{{event.date_start}}-{{event.date_end}}</h6>
+        <p>{{event.description}}</p>
+
+        <!--Review-->
+        <div class="orange-text">
+          <i class="fa fa-star"> </i>
+          <i class="fa fa-star"> </i>
+          <i class="fa fa-star"> </i>
+          <i class="fa fa-star"> </i>
+          <i class="fa fa-star-half-full"> </i>
+        </div>
+      </div>
+    </div>
+    <!--Grid column-->
+
+  </div>
+  <!--Grid row-->
+
+</section>
