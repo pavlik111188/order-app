@@ -36,12 +36,11 @@
                 {{ error | translate }}
               </div>
             </div>
-
-            <p class="font-small blue-text d-flex justify-content-end" (click)="resetPasswordModal.show()" id="open_reset_modal">
-              <a class="blue-text ml-1">{{ 'LABELS.FORGOT_PASSWORD' | translate }}</a>
-            </p>
-            <p class="text-danger"></p>
           </div>
+
+          <p class="font-small blue-text d-flex justify-content-end" (click)="resetPasswordModal.show()" id="open_reset_modal">
+            <a class="blue-text ml-1">{{ 'LABELS.FORGOT_PASSWORD' | translate }}</a>
+          </p>
 
           <div class="text-center mb-3">
             <button type="submit" class="btn primary-color-dark btn-lg btn-block" id="button_login" [disabled]="!loginForm.valid">
