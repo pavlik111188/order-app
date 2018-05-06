@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { EventService } from '../../shared/services/event.service';
 import { ToastComponent } from '../../shared/toats/toast.component';
@@ -113,6 +113,7 @@ export class DashboardClientComponent implements OnInit {
         res => {
           this.events.push(res);
           this.eventForm.reset();
+          this.getEvents();
           this.toast.setMessage('item added successfully.', 'success');
         },
         error => console.log(error)

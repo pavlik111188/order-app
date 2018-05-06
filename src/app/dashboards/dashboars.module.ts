@@ -5,13 +5,15 @@ import {DashboardsComponent} from "./dashboards.component";
 import {DashboardAdminComponent} from "./dashboard-admin/dashboard-admin.component";
 import {DashboardClientComponent} from "./dashboard-client/dashboard-client.component";
 import {DashboardUserComponent} from "./dashboard-user/dashboard-user.component";
+import {DashboardEventCardComponent} from "./dashboard-event-card/dashboard-event-card.component";
 
 @NgModule({
     declarations: [
         DashboardsComponent,
         DashboardAdminComponent,
         DashboardClientComponent,
-        DashboardUserComponent
+        DashboardUserComponent,
+        DashboardEventCardComponent
     ],
     imports: [
         SharedModule

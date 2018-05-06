@@ -57,7 +57,7 @@
       </div>
 
       <div class="modal-body mb-0">
-        <form [formGroup]="eventForm" (ngSubmit)="editEvent(event)">
+        <form [formGroup]="eventForm" (submit)="editEvent(event)">
 
           <div class="md-form">
             <input mdbActive type="text" class="form-control" name="title" formControlName="title" autofocus>
@@ -127,7 +127,7 @@
       </div>
 
       <div class="modal-body mb-0">
-        <form [formGroup]="eventForm" (ngsubmit)="addEvent()">
+        <form [formGroup]="eventForm" (submit)="addEvent()">
 
           <div class="md-form">
             <input mdbActive type="text" class="form-control" name="title" formControlName="title" autofocus>
